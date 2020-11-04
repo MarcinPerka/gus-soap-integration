@@ -6,8 +6,9 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 
 
@@ -21,7 +22,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="GetValueResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="DanePobierzPelnyRaportResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,36 +33,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getValueResult"
+    "danePobierzPelnyRaportResult"
 })
-@XmlRootElement(name = "GetValueResponse", namespace = "http://CIS/BIR/2014/07")
-public class GetValueResponse {
+@XmlRootElement(name = "DanePobierzPelnyRaportResponse")
+public class DanePobierzPelnyRaportResponse {
 
-    @XmlElement(name = "GetValueResult", namespace = "http://CIS/BIR/2014/07")
-    protected String getValueResult;
+    @XmlElementRef(name = "DanePobierzPelnyRaportResult", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> danePobierzPelnyRaportResult;
 
     /**
-     * Gets the value of the getValueResult property.
+     * Gets the value of the danePobierzPelnyRaportResult property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public String getGetValueResult() {
-        return getValueResult;
+    public JAXBElement<String> getDanePobierzPelnyRaportResult() {
+        return danePobierzPelnyRaportResult;
     }
 
     /**
-     * Sets the value of the getValueResult property.
+     * Sets the value of the danePobierzPelnyRaportResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setGetValueResult(String value) {
-        this.getValueResult = value;
+    public void setDanePobierzPelnyRaportResult(JAXBElement<String> value) {
+        this.danePobierzPelnyRaportResult = value;
     }
 
 }

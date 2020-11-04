@@ -6,9 +6,8 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 
 
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="pKluczUzytkownika" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="GetValueResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pKluczUzytkownika"
+    "getValueResult"
 })
-@XmlRootElement(name = "Zaloguj")
-public class Zaloguj {
+@XmlRootElement(name = "GetValueResponse", namespace = "http://CIS/BIR/2014/07")
+public class GetValueResponse {
 
-    @XmlElementRef(name = "pKluczUzytkownika", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> pKluczUzytkownika;
+    @XmlElement(name = "GetValueResult", namespace = "http://CIS/BIR/2014/07")
+    protected String getValueResult;
 
     /**
-     * Gets the value of the pKluczUzytkownika property.
+     * Gets the value of the getValueResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<String> getPKluczUzytkownika() {
-        return pKluczUzytkownika;
+    public String getGetValueResult() {
+        return getValueResult;
     }
 
     /**
-     * Sets the value of the pKluczUzytkownika property.
+     * Sets the value of the getValueResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link String }
      *     
      */
-    public void setPKluczUzytkownika(JAXBElement<String> value) {
-        this.pKluczUzytkownika = value;
+    public void setGetValueResult(String value) {
+        this.getValueResult = value;
     }
 
 }

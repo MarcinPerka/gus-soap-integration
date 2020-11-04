@@ -6,7 +6,7 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="pNazwaParametru" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="DaneSzukajPodmiotyResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,36 +33,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pNazwaParametru"
+    "daneSzukajPodmiotyResult"
 })
-@XmlRootElement(name = "GetValue", namespace = "http://CIS/BIR/2014/07")
-public class GetValue {
+@XmlRootElement(name = "DaneSzukajPodmiotyResponse")
+public class DaneSzukajPodmiotyResponse {
 
-    @XmlElementRef(name = "pNazwaParametru", namespace = "http://CIS/BIR/2014/07", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> pNazwaParametru;
+    @XmlElementRef(name = "DaneSzukajPodmiotyResult", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> daneSzukajPodmiotyResult;
 
     /**
-     * Gets the value of the pNazwaParametru property.
+     * Gets the value of the daneSzukajPodmiotyResult property.
      * 
      * @return
      *     possible object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public JAXBElement<String> getPNazwaParametru() {
-        return pNazwaParametru;
+    public JAXBElement<String> getDaneSzukajPodmiotyResult() {
+        return daneSzukajPodmiotyResult;
     }
 
     /**
-     * Sets the value of the pNazwaParametru property.
+     * Sets the value of the daneSzukajPodmiotyResult property.
      * 
      * @param value
      *     allowed object is
      *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setPNazwaParametru(JAXBElement<String> value) {
-        this.pNazwaParametru = value;
+    public void setDaneSzukajPodmiotyResult(JAXBElement<String> value) {
+        this.daneSzukajPodmiotyResult = value;
     }
 
 }

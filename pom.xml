@@ -64,12 +64,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>com.archu.gus</generatePackage>
-                    <schemaDirectory>src/main/resources/wsdl</schemaDirectory>
-                    <schemaIncludes>
-                        <schemaInclude>*.wsdl</schemaInclude>
-                    </schemaIncludes>
+                        <schemaLanguage>WSDL</schemaLanguage>
+                        <generatePackage>com.archu.gus.regon</generatePackage>
+                        <schemaDirectory>src/main/resources/wsdl</schemaDirectory>
+                        <schemaIncludes>
+                            <schemaInclude>UslugaBIRzewnPubl-ver11-test.wsdl</schemaInclude>
+                        </schemaIncludes>
                 </configuration>
             </plugin>
         </plugins>

@@ -6,7 +6,7 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;

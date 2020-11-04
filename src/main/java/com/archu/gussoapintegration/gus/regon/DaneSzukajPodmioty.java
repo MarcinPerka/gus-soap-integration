@@ -6,7 +6,7 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="DaneSzukajPodmiotyResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="pParametryWyszukiwania" type="{http://CIS/BIR/PUBL/2014/07/DataContract}ParametryWyszukiwania" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,36 +33,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "daneSzukajPodmiotyResult"
+    "pParametryWyszukiwania"
 })
-@XmlRootElement(name = "DaneSzukajPodmiotyResponse")
-public class DaneSzukajPodmiotyResponse {
+@XmlRootElement(name = "DaneSzukajPodmioty")
+public class DaneSzukajPodmioty {
 
-    @XmlElementRef(name = "DaneSzukajPodmiotyResult", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> daneSzukajPodmiotyResult;
+    @XmlElementRef(name = "pParametryWyszukiwania", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
+    protected JAXBElement<ParametryWyszukiwania> pParametryWyszukiwania;
 
     /**
-     * Gets the value of the daneSzukajPodmiotyResult property.
+     * Gets the value of the pParametryWyszukiwania property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ParametryWyszukiwania }{@code >}
      *     
      */
-    public JAXBElement<String> getDaneSzukajPodmiotyResult() {
-        return daneSzukajPodmiotyResult;
+    public JAXBElement<ParametryWyszukiwania> getPParametryWyszukiwania() {
+        return pParametryWyszukiwania;
     }
 
     /**
-     * Sets the value of the daneSzukajPodmiotyResult property.
+     * Sets the value of the pParametryWyszukiwania property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link ParametryWyszukiwania }{@code >}
      *     
      */
-    public void setDaneSzukajPodmiotyResult(JAXBElement<String> value) {
-        this.daneSzukajPodmiotyResult = value;
+    public void setPParametryWyszukiwania(JAXBElement<ParametryWyszukiwania> value) {
+        this.pParametryWyszukiwania = value;
     }
 
 }

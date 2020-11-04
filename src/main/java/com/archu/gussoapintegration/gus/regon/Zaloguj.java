@@ -6,8 +6,9 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 
 
@@ -21,7 +22,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="WylogujResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="pKluczUzytkownika" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,36 +33,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "wylogujResult"
+    "pKluczUzytkownika"
 })
-@XmlRootElement(name = "WylogujResponse")
-public class WylogujResponse {
+@XmlRootElement(name = "Zaloguj")
+public class Zaloguj {
 
-    @XmlElement(name = "WylogujResult")
-    protected Boolean wylogujResult;
+    @XmlElementRef(name = "pKluczUzytkownika", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> pKluczUzytkownika;
 
     /**
-     * Gets the value of the wylogujResult property.
+     * Gets the value of the pKluczUzytkownika property.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public Boolean isWylogujResult() {
-        return wylogujResult;
+    public JAXBElement<String> getPKluczUzytkownika() {
+        return pKluczUzytkownika;
     }
 
     /**
-     * Sets the value of the wylogujResult property.
+     * Sets the value of the pKluczUzytkownika property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
      *     
      */
-    public void setWylogujResult(Boolean value) {
-        this.wylogujResult = value;
+    public void setPKluczUzytkownika(JAXBElement<String> value) {
+        this.pKluczUzytkownika = value;
     }
 
 }

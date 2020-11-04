@@ -6,9 +6,8 @@
 //
 
 
-package com.archu.gussoapintegration.gus;
+package com.archu.gussoapintegration.gus.regon;
 
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.*;
 
 
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.*;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="pIdentyfikatorSesji" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="WylogujResult" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -33,36 +32,36 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pIdentyfikatorSesji"
+    "wylogujResult"
 })
-@XmlRootElement(name = "Wyloguj")
-public class Wyloguj {
+@XmlRootElement(name = "WylogujResponse")
+public class WylogujResponse {
 
-    @XmlElementRef(name = "pIdentyfikatorSesji", namespace = "http://CIS/BIR/PUBL/2014/07", type = JAXBElement.class, required = false)
-    protected JAXBElement<String> pIdentyfikatorSesji;
+    @XmlElement(name = "WylogujResult")
+    protected Boolean wylogujResult;
 
     /**
-     * Gets the value of the pIdentyfikatorSesji property.
+     * Gets the value of the wylogujResult property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link Boolean }
      *     
      */
-    public JAXBElement<String> getPIdentyfikatorSesji() {
-        return pIdentyfikatorSesji;
+    public Boolean isWylogujResult() {
+        return wylogujResult;
     }
 
     /**
-     * Sets the value of the pIdentyfikatorSesji property.
+     * Sets the value of the wylogujResult property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link Boolean }
      *     
      */
-    public void setPIdentyfikatorSesji(JAXBElement<String> value) {
-        this.pIdentyfikatorSesji = value;
+    public void setWylogujResult(Boolean value) {
+        this.wylogujResult = value;
     }
 
 }
