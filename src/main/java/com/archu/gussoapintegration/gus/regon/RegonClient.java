@@ -1,37 +1,36 @@
 package com.archu.gussoapintegration.gus.regon;
 
 import com.archu.gus.regon.ObjectFactory;
-import com.archu.gus.regon.Zaloguj;
 import com.archu.gus.regon.ZalogujResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
-import org.springframework.ws.soap.saaj.SaajSoapMessage;
-import org.springframework.ws.transport.TransportConstants;
-
-import javax.xml.soap.MimeHeaders;
+import org.springframework.ws.soap.SoapMessage;
 
 @Slf4j
 @AllArgsConstructor
 public class RegonClient extends WebServiceGatewaySupport {
 
-    private String serviceUrl;
+    private String apiUrl;
+    private String userKey;
+    private ObjectFactory objectFactory;
 
-    public ZalogujResponse getZaloguj(String pKluczUzytkownika) {
-        ObjectFactory objectFactory = new ObjectFactory();
+    public ZalogujResponse getZaloguj() {
+        var request = objectFactory.createZaloguj();
+        request.setPKluczUzytkownika(objectFactory.createZalogujPKluczUzytkownika(userKey));
 
-        Zaloguj request = new Zaloguj();
-        request.setPKluczUzytkownika(objectFactory.createZalogujPKluczUzytkownika(pKluczUzytkownika));
+        log.info("Requesting zaloguj for {}", userKey);
 
-        log.info("Requesting zaloguj for {}", pKluczUzytkownika);
-
-        ZalogujResponse response = (ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(serviceUrl, request,
-                webServiceMessage -> {
-                    SaajSoapMessage soapMessage = (SaajSoapMessage) webServiceMessage;
-                    MimeHeaders headers = soapMessage.getSaajMessage().getMimeHeaders();
-                    headers.addHeader(TransportConstants.HEADER_CONTENT_TYPE, "application/xop+xml");
-                });
-
-        return response;
+        try {
+            var response = (ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(apiUrl, request,
+                    message -> {
+                        var soapMessage = (SoapMessage) message;
+                        soapMessage.setSoapAction("http://CIS/BIR/PUBL/2014/07/IUslugaBIRzewnPubl/ZalogujResponse");
+                    });
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
