@@ -21,8 +21,8 @@ public class RegonService {
         return zalogujResponse;
     }
 
-    public DaneSzukajPodmiotyResponse getSubject(String nip){
-        var daneSzukajPodmiotyResponse = soapRegonClient.getDaneSzukajPodmiot(nip);
+    public DaneSzukajPodmiotyResponse getSubject(SearchingParams searchingParams){
+        var daneSzukajPodmiotyResponse = soapRegonClient.getDaneSzukajPodmiot(searchingParams);
         //TODO convert to dtos to rid off of useless stuff.
         return daneSzukajPodmiotyResponse;
     }

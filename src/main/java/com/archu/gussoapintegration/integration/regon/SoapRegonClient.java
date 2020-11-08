@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.integration.regon;
 
+import com.archu.gussoapintegration.regon.SearchingParams;
 import com.gus.regon.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,20 +44,31 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         return zalogujResponse;
     }
 
-    public DaneSzukajPodmiotyResponse getDaneSzukajPodmiot(String nip) {
+    public DaneSzukajPodmiotyResponse getDaneSzukajPodmiot(SearchingParams searchingParams) {
         var factory = new ObjectFactory();
 
         var daneSzukajPodmioty = new DaneSzukajPodmioty();
-        var parametryWyszukiwania = new ParametryWyszukiwania();
-        parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(nip));
+        ParametryWyszukiwania parametryWyszukiwania = createParametryWyszukiwania(searchingParams, factory);
         daneSzukajPodmioty.setPParametryWyszukiwania(factory.createDaneSzukajPodmiotyPParametryWyszukiwania(parametryWyszukiwania));
 
-        log.debug("Requesting for subject with nip: {}", nip);
+        log.debug("Requesting for subject with searching params: {}", searchingParams);
 
         return (DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(
                 daneSzukajPodmioty,
                 SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)
         );
+    }
+
+    private ParametryWyszukiwania createParametryWyszukiwania(SearchingParams searchingParams, ObjectFactory factory) {
+        var parametryWyszukiwania = new ParametryWyszukiwania();
+        if(searchingParams.getNip() != null) parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
+        if(searchingParams.getKrs() != null) parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
+        if(searchingParams.getRegon() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
+        if(searchingParams.getRegonsWith9Chars() != null) parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Chars())));
+        if(searchingParams.getRegonsWith14Chars() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Chars())));
+        if(searchingParams.getKrses() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaKrsy(String.join(",", searchingParams.getKrses())));
+        if(searchingParams.getNips() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaNipy(String.join(",", searchingParams.getNips())));
+        return parametryWyszukiwania;
     }
 
     public DanePobierzPelnyRaportResponse getDanePobierzPelnyRaport(String regon, String reportName) {
@@ -73,7 +85,6 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
                 SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionId)
         );
     }
-
 
 
     @Scheduled(fixedRateString = "${soap.regon.session-refresh}")

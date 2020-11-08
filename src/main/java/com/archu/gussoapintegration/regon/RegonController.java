@@ -5,14 +5,18 @@ import com.gus.regon.DaneSzukajPodmiotyResponse;
 import com.gus.regon.ZalogujResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "/regon", produces = MediaType.APPLICATION_JSON_VALUE)
+@Validated
 public class RegonController {
 
     private final RegonService regonService;
@@ -23,8 +27,8 @@ public class RegonController {
     }
 
     @GetMapping("/subject")
-    public DaneSzukajPodmiotyResponse getSubject(@RequestParam String nip) {
-        return regonService.getSubject(nip);
+    public DaneSzukajPodmiotyResponse getSubject(@Valid SearchingParams searchingParams) {
+        return regonService.getSubject(searchingParams);
     }
 
     @GetMapping("/full-report")
