@@ -1,7 +1,7 @@
 package com.archu.gussoapintegration.integration.regon;
 
 import com.archu.gussoapintegration.regon.SearchingParams;
-import com.gus.regon.*;
+import com.gus.regon.wsdl.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -52,7 +52,6 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         daneSzukajPodmioty.setPParametryWyszukiwania(factory.createDaneSzukajPodmiotyPParametryWyszukiwania(parametryWyszukiwania));
 
         log.debug("Requesting for subject with searching params: {}", searchingParams);
-
         return (DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(
                 daneSzukajPodmioty,
                 SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)
@@ -61,13 +60,20 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
 
     private ParametryWyszukiwania createParametryWyszukiwania(SearchingParams searchingParams, ObjectFactory factory) {
         var parametryWyszukiwania = new ParametryWyszukiwania();
-        if(searchingParams.getNip() != null) parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
-        if(searchingParams.getKrs() != null) parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
-        if(searchingParams.getRegon() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
-        if(searchingParams.getRegonsWith9Chars() != null) parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Chars())));
-        if(searchingParams.getRegonsWith14Chars() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Chars())));
-        if(searchingParams.getKrses() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaKrsy(String.join(",", searchingParams.getKrses())));
-        if(searchingParams.getNips() != null) parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaNipy(String.join(",", searchingParams.getNips())));
+        if (searchingParams.getNip() != null)
+            parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
+        if (searchingParams.getKrs() != null)
+            parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
+        if (searchingParams.getRegon() != null)
+            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
+        if (searchingParams.getRegonsWith9Chars() != null)
+            parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Chars())));
+        if (searchingParams.getRegonsWith14Chars() != null)
+            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Chars())));
+        if (searchingParams.getKrses() != null)
+            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaKrsy(String.join(",", searchingParams.getKrses())));
+        if (searchingParams.getNips() != null)
+            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaNipy(String.join(",", searchingParams.getNips())));
         return parametryWyszukiwania;
     }
 

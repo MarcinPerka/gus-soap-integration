@@ -72,19 +72,20 @@
                 <version>0.14.0</version>
                 <executions>
                     <execution>
+                        <id>wsdl</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
+                        <configuration>
+                            <schemaLanguage>WSDL</schemaLanguage>
+                            <generatePackage>com.gus.regon.wsdl</generatePackage>
+                            <schemaDirectory>src/main/resources/wsdl/</schemaDirectory>
+                            <schemaIncludes>
+                                <schemaInclude>*.wsdl</schemaInclude>
+                            </schemaIncludes>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>com.gus.regon</generatePackage>
-                    <schemaDirectory>src/main/resources/wsdl</schemaDirectory>
-                    <schemaIncludes>
-                        <schemaInclude>*.wsdl</schemaInclude>
-                    </schemaIncludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

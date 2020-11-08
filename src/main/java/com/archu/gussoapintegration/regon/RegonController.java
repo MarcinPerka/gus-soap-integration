@@ -1,8 +1,8 @@
 package com.archu.gussoapintegration.regon;
 
-import com.gus.regon.DanePobierzPelnyRaportResponse;
-import com.gus.regon.DaneSzukajPodmiotyResponse;
-import com.gus.regon.ZalogujResponse;
+import com.archu.gussoapintegration.regon.dto.SessionDTO;
+import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
+import com.gus.regon.wsdl.DaneSzukajPodmiotyResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -22,7 +22,7 @@ public class RegonController {
     private final RegonService regonService;
 
     @GetMapping("/login")
-    public ZalogujResponse login() {
+    public SessionDTO login() {
         return regonService.login();
     }
 
