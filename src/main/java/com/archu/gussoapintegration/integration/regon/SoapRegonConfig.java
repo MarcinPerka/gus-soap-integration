@@ -7,10 +7,6 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.ws.soap.SoapVersion;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPConstants;
-import javax.xml.soap.SOAPException;
-
 @Configuration
 public class SoapRegonConfig {
 
@@ -32,17 +28,15 @@ public class SoapRegonConfig {
     }
 
     @Bean
-    public SaajSoapMessageFactory messageFactory() throws SOAPException {
-        var messageFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
-        var saajSoapMessageFactory = new SaajSoapMessageFactory(messageFactory);
+    public SaajSoapMessageFactory messageFactory() {
+        var saajSoapMessageFactory = new SaajSoapMessageFactory();
         saajSoapMessageFactory.setSoapVersion(SoapVersion.SOAP_12);
 
         return saajSoapMessageFactory;
     }
 
-
     @Bean
-    public SoapRegonClient soapClient(Jaxb2Marshaller marshaller, SaajSoapMessageFactory messageFactory) throws SOAPException {
+    public SoapRegonClient soapClient(Jaxb2Marshaller marshaller, SaajSoapMessageFactory messageFactory) {
         var client = new SoapRegonClient(userKey);
         client.setDefaultUri(apiEndpoint);
         client.setMarshaller(marshaller);

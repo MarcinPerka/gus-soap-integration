@@ -1,27 +1,40 @@
 package com.archu.gussoapintegration.integration.regon;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.SoapHeader;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
+import org.springframework.ws.transport.context.TransportContextHolder;
+import org.springframework.ws.transport.http.HttpUrlConnection;
 
 import javax.xml.namespace.QName;
+import java.io.IOException;
 
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.*;
 
+@Slf4j
 class SoapRegonUtils {
 
-    static SoapActionCallback prepareSoapActionCallback(WebServiceTemplate webServiceTemplate, String action) {
+    static SoapActionCallback prepareSoapActionCallback(String apiEndpoint, String action, String sessionId) {
 
         return new SoapActionCallback(action) {
-            public void doWithMessage(WebServiceMessage message) {
+            public void doWithMessage(WebServiceMessage message) throws IOException {
                 var soapMessage = (SaajSoapMessage) message;
                 var soapHeader = soapMessage.getSoapHeader();
-                setWsaTo(soapHeader, webServiceTemplate.getDefaultUri());
+                setWsaTo(soapHeader, apiEndpoint);
                 setWsaAction(soapHeader, action);
+                setSid(sessionId);
             }
         };
+    }
+
+    private static void setSid(String sessionId) throws IOException {
+        var context = TransportContextHolder.getTransportContext();
+        var connection = (HttpUrlConnection) context.getConnection();
+        log.debug("Add sid http header to request: {}", sessionId);
+        connection.addRequestHeader("sid", sessionId);
     }
 
     private static void setWsaAction(SoapHeader soapHeader, String action) {
