@@ -1,7 +1,7 @@
 package com.archu.gussoapintegration.regon;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.validation.constraints.Size;
 
@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
  * User should use only one of parameters listed below.
  */
 @Getter
+@ToString
 public class SearchingParams {
 
     /**

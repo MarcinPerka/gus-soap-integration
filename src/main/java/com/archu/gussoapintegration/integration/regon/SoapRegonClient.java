@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.integration.regon;
 
+import com.archu.gussoapintegration.integration.regon.model.DaneSzukajPodmiotRoot;
 import com.archu.gussoapintegration.regon.SearchingParams;
 import com.gus.regon.wsdl.*;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
+import java.io.StringReader;
+import java.util.List;
 
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.*;
 
@@ -44,7 +50,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         return zalogujResponse;
     }
 
-    public DaneSzukajPodmiotyResponse getDaneSzukajPodmiot(SearchingParams searchingParams) {
+    public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SearchingParams searchingParams) {
         var factory = new ObjectFactory();
 
         var daneSzukajPodmioty = new DaneSzukajPodmioty();
@@ -52,10 +58,25 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         daneSzukajPodmioty.setPParametryWyszukiwania(factory.createDaneSzukajPodmiotyPParametryWyszukiwania(parametryWyszukiwania));
 
         log.debug("Requesting for subject with searching params: {}", searchingParams);
-        return (DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(
-                daneSzukajPodmioty,
-                SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)
-        );
+        var daneSzukajPodmiotyResponse =  ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)))
+                .getDaneSzukajPodmiotyResult()
+                .getValue();
+
+        var daneSzukajPodmiotRoot = unmarshal(daneSzukajPodmiotyResponse, DaneSzukajPodmiotRoot.class);
+        return daneSzukajPodmiotRoot.getDane();
+    }
+
+    private <T> T unmarshal(String xml, Class<T> rootClass) {
+        log.debug("Parsing xml to: {}", rootClass.toString());
+        JAXBContext jaxbContext;
+        try {
+            jaxbContext = JAXBContext.newInstance(rootClass);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            return (T) jaxbUnmarshaller.unmarshal(new StringReader(xml));
+        } catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     private ParametryWyszukiwania createParametryWyszukiwania(SearchingParams searchingParams, ObjectFactory factory) {

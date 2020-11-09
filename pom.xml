@@ -79,21 +79,30 @@
                         <configuration>
                             <schemaLanguage>WSDL</schemaLanguage>
                             <generatePackage>com.gus.regon.wsdl</generatePackage>
+                            <generateDirectory>${project.build.directory}/generated-sources/xjc-wsdl</generateDirectory>
                             <schemaDirectory>src/main/resources/wsdl/</schemaDirectory>
                             <schemaIncludes>
                                 <schemaInclude>*.wsdl</schemaInclude>
                             </schemaIncludes>
                         </configuration>
                     </execution>
+                    <!--                    For each xsd file should be a separate execution due to similar root element name and same namespace schema... -->
+                    <!--                    <execution>-->
+                    <!--                        <id>xsd-dane-szukaj-podmioty</id>-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>generate</goal>-->
+                    <!--                        </goals>-->
+                    <!--                        <configuration>-->
+                    <!--                            <schemaLanguage>WSDL</schemaLanguage>-->
+                    <!--                            <generatePackage>com.gus.regon.xsd</generatePackage>-->
+                    <!--                            <generateDirectory>${project.build.directory}/generated-sources/xjc-xsd-dane-szukaj-podmioty</generateDirectory>-->
+                    <!--                            <schemaDirectory>src/main/resources/xsd/01-DaneSzukajPodmioty</schemaDirectory>-->
+                    <!--                            <schemaIncludes>-->
+                    <!--                                <schemaInclude>*.xsd</schemaInclude>-->
+                    <!--                            </schemaIncludes>-->
+                    <!--                        </configuration>-->
+                    <!--                    </execution>-->
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>14</source>
-                    <target>14</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
