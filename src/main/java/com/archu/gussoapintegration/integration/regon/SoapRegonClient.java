@@ -98,14 +98,14 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         return parametryWyszukiwania;
     }
 
-    public DanePobierzPelnyRaportResponse getDanePobierzPelnyRaport(String regon, String reportName) {
+    public DanePobierzPelnyRaportResponse getDanePobierzPelnyRaport(String regon, String fullReportName) {
         var factory = new ObjectFactory();
 
         var danePobierzPelnyRaport = new DanePobierzPelnyRaport();
         danePobierzPelnyRaport.setPRegon(factory.createDanePobierzPelnyRaportPRegon(regon));
-        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(reportName));
+        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(fullReportName));
 
-        log.debug("Requesting for full report with regon: {} and report name: {}", regon, reportName);
+        log.debug("Requesting for full report with regon: {} and report name: {}", regon, fullReportName);
 
         return (DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzPelnyRaport,

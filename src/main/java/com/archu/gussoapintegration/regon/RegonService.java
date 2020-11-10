@@ -29,8 +29,8 @@ public class RegonService {
         return regonConverter.convertDaneSzukajPodmiotRootToSubjectDTO(result);
     }
 
-    public DanePobierzPelnyRaportResponse getFullReport(String regon, String reportName) {
-        var danePobierzPelnyRaport = soapRegonClient.getDanePobierzPelnyRaport(regon, reportName);
+    public DanePobierzPelnyRaportResponse getFullReport(String regon, FullReportName fullReportName) {
+        var danePobierzPelnyRaport = soapRegonClient.getDanePobierzPelnyRaport(regon, fullReportName.name());
         //TODO convert to dtos to rid off of useless stuff.
         return danePobierzPelnyRaport;
     }

@@ -1,6 +1,6 @@
-package com.archu.gussoapintegration.integration.regon;
+package com.archu.gussoapintegration.regon;
 
-public enum SoapReportName {
+public enum FullReportName {
     BIR11OsFizycznaDaneOgolne,
     BIR11OsFizycznaDzialalnoscCeidg,
     BIR11OsFizycznaDzialalnoscRolnicza,
@@ -16,4 +16,5 @@ public enum SoapReportName {
     BIR11JednLokalnaOsPrawnej,
     BIR11JednLokalnaOsPrawnejPkd,
     BIR11OsPrawnaSpCywilnaWspolnicy,
+    BIR11TypPodmiotu
 }

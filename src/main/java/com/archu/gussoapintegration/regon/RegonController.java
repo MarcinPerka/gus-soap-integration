@@ -1,6 +1,5 @@
 package com.archu.gussoapintegration.regon;
 
-import com.archu.gussoapintegration.integration.regon.model.DaneSzukajPodmiotRoot;
 import com.archu.gussoapintegration.regon.dto.SessionDTO;
 import com.archu.gussoapintegration.regon.dto.SubjectDTO;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
@@ -34,7 +33,7 @@ public class RegonController {
     }
 
     @GetMapping("/full-report")
-    public DanePobierzPelnyRaportResponse getFullReport(@RequestParam String regon, @RequestParam(defaultValue = "") String reportName) {
-        return regonService.getFullReport(regon, reportName);
+    public DanePobierzPelnyRaportResponse getFullReport(@RequestParam String regon, @RequestParam FullReportName fullReportName) {
+        return regonService.getFullReport(regon, fullReportName);
     }
 }
