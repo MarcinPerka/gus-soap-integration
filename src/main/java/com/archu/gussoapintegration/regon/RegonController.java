@@ -2,6 +2,7 @@ package com.archu.gussoapintegration.regon;
 
 import com.archu.gussoapintegration.integration.regon.model.DaneSzukajPodmiotRoot;
 import com.archu.gussoapintegration.regon.dto.SessionDTO;
+import com.archu.gussoapintegration.regon.dto.SubjectDTO;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -28,7 +29,7 @@ public class RegonController {
     }
 
     @GetMapping("/subjects")
-    public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getSubject(@Valid SearchingParams searchingParams) {
+    public List<SubjectDTO> getSubject(@Valid SearchingParams searchingParams) {
         return regonService.getSubjects(searchingParams);
     }
 
