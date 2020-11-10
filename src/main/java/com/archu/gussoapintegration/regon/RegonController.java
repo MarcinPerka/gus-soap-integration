@@ -4,6 +4,7 @@ import com.archu.gussoapintegration.regon.dto.SessionDTO;
 import com.archu.gussoapintegration.regon.dto.SubjectDTO;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@Validated
 @AllArgsConstructor
 @RequestMapping(path = "/regon", produces = MediaType.APPLICATION_JSON_VALUE)
-@Validated
+@Slf4j
 public class RegonController {
 
     private final RegonService regonService;
