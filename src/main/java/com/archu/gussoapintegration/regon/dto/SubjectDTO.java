@@ -21,7 +21,7 @@ public class SubjectDTO {
     private String houseNumber;
     private String apartmentNumber;
     private String type;
-    private Integer silosID;
+    private Integer silosId;
     private String businessEndDate;
     private String postTown;
 }

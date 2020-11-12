@@ -27,7 +27,7 @@ public class RegonConverter {
                 .houseNumber(it.getNrNieruchomosci())
                 .apartmentNumber(it.getNrLokalu())
                 .type(it.getTyp())
-                .silosID(it.getSilosID())
+                .silosId(it.getSilosID())
                 .businessEndDate(it.getDataZakonczeniaDzialalnosci())
                 .postTown(it.getMiejscowoscPoczty())
                 .build()).collect(Collectors.toList());

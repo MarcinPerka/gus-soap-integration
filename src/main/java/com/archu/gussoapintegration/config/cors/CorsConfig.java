@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.cors;
+package com.archu.gussoapintegration.config.cors;
 
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
