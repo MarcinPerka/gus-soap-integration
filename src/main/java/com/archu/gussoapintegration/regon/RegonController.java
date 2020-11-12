@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @Validated
 @AllArgsConstructor
-@RequestMapping(path = "/regon", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/regon", produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
 public class RegonController {
 
