@@ -20,7 +20,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-@Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
