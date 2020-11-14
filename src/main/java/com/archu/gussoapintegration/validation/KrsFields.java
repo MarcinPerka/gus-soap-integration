@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = KrsFieldsValidator.class)
 public @interface KrsFields {
 
-    String message() default "{validator.krs-fields.message}";
+    String message() default "List should contains only krses with 10 digits.";
 
     Class<?>[] groups() default {};
 

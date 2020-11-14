@@ -2,8 +2,8 @@ package com.archu.gussoapintegration.regon;
 
 import com.archu.gussoapintegration.validation.KrsFields;
 import com.archu.gussoapintegration.validation.NipFields;
-import com.archu.gussoapintegration.validation.Regon14CharsFields;
-import com.archu.gussoapintegration.validation.Regon9CharsFields;
+import com.archu.gussoapintegration.validation.Regon14DigitsFields;
+import com.archu.gussoapintegration.validation.Regon9DigitsFields;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -22,34 +22,31 @@ public final class SearchingParams {
     /**
      * One value
      */
-    @Size(min = 10, max = 10, message = "{validator.size.searching-params.nip.message}")
-    @Pattern(regexp = "[0-9]{10}")
+    @Pattern(regexp = "[0-9]{10}", message = "{validator.pattern.searching-params.nip.message}")
     private String nip;
 
-    @Size(min = 9, max = 14, message = "{validator.size.searching-params.regon.message}")
-    @Pattern(regexp = "(?=[0-9]*$)(?:.{9}|.{14})$")
+    @Pattern(regexp = "(?=[0-9]*$)(?:.{9}|.{14})$", message = "{validator.pattern.searching-params.regon.message}")
     private String regon;
 
-    @Size(min = 10, max = 10, message = "{validator.size.searching-params.krs.message}")
-    @Pattern(regexp = "[0-9]{10}")
+    @Pattern(regexp = "[0-9]{10}", message = "{validator.pattern.searching-params.krs.message}")
     private String krs;
 
     /**
      * Max 20 values
      */
-    @Size(max = 20)
-    @Regon9CharsFields
-    private List<String> regonsWith9Chars;
+    @Size(max = 20, message = "{validator.size.searching-params.regons-with-9-digits.message}")
+    @Regon9DigitsFields(message = "{validator.regons-with-9-digits.searching-params.regons-with-9-digits.message}")
+    private List<String> regonsWith9Digits;
 
-    @Size(max = 20)
-    @Regon14CharsFields
-    private List<String> regonsWith14Chars;
+    @Size(max = 20, message = "{validator.size.searching-params.regons-with-14-digits.message}")
+    @Regon14DigitsFields(message = "{validator.regons-with-14-digits.searching-params.regons-with-14-digits.message}")
+    private List<String> regonsWith14Digits;
 
-    @Size(max = 20)
-    @KrsFields
+    @Size(max = 20, message = "{validator.size.searching-params.krses.message}")
+    @KrsFields(message = "{validator.krses.searching-params.krses.message}")
     private List<String> krses;
 
-    @Size(max = 20)
-    @NipFields
+    @Size(max = 20, message = "{validator.size.searching-params.nips.message}")
+    @NipFields(message = "{validator.nips.searching-params.nips.message}")
     private List<String> nips;
 }

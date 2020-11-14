@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = NipFieldsValidator.class)
 public @interface NipFields {
 
-    String message() default "{validator.nip-fields.message}";
+    String message() default "List should contains only nips with 10 digits.";
 
     Class<?>[] groups() default {};
 

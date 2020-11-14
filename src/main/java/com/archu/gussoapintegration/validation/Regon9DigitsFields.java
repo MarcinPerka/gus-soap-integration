@@ -9,10 +9,10 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = Regon9CharsFieldsValidator.class)
-public @interface Regon9CharsFields {
+@Constraint(validatedBy = Regon9DigitsFieldsValidator.class)
+public @interface Regon9DigitsFields {
 
-    String message() default "{validator.regon-9-chars-fields.message}";
+    String message() default "List should contains only regons with 9 digits.";
 
     Class<?>[] groups() default {};
 

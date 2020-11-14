@@ -4,7 +4,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 
-public class Regon9CharsFieldsValidator implements ConstraintValidator<Regon9CharsFields, List<String>> {
+public class Regon9DigitsFieldsValidator implements ConstraintValidator<Regon9DigitsFields, List<String>> {
 
     @Override
     public boolean isValid(List<String> regons, ConstraintValidatorContext context) {

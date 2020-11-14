@@ -87,10 +87,10 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
             parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
         if (searchingParams.getRegon() != null)
             parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
-        if (searchingParams.getRegonsWith9Chars() != null)
-            parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Chars())));
-        if (searchingParams.getRegonsWith14Chars() != null)
-            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Chars())));
+        if (searchingParams.getRegonsWith9Digits() != null)
+            parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Digits())));
+        if (searchingParams.getRegonsWith14Digits() != null)
+            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Digits())));
         if (searchingParams.getKrses() != null)
             parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaKrsy(String.join(",", searchingParams.getKrses())));
         if (searchingParams.getNips() != null)
