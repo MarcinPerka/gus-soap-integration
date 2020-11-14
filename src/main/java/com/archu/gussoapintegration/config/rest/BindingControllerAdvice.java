@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon;
+package com.archu.gussoapintegration.config.rest;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;

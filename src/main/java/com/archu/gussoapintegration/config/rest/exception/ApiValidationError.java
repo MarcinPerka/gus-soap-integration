@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.exception;
+package com.archu.gussoapintegration.config.rest.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

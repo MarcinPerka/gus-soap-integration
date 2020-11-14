@@ -1,9 +1,6 @@
-package com.archu.gussoapintegration.exception;
+package com.archu.gussoapintegration.config.rest.exception;
 
-import com.archu.gussoapintegration.exception.ApiError;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +10,11 @@ import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -147,6 +146,21 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         var apiError = new ApiError(HttpStatus.BAD_REQUEST,
                 String.format("Could not find the %s method for URL %s", ex.getHttpMethod(), ex.getRequestURL()), ex.getClass().getSimpleName());
+        apiError.setDetails(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
+     * Handle MethodArgumentTypeMismatchException.
+     *
+     * @param ex      MethodArgumentTypeMismatchException
+     * @return the ApiError object
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    private ResponseEntity<Object> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException ex) {
+
+        var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Could not convert parameter.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
         return buildResponseEntity(apiError);
     }
