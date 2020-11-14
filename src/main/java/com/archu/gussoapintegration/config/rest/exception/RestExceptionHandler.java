@@ -153,7 +153,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     /**
      * Handle MethodArgumentTypeMismatchException.
      *
-     * @param ex      MethodArgumentTypeMismatchException
+     * @param ex MethodArgumentTypeMismatchException
      * @return the ApiError object
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
