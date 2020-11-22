@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon;
+package com.archu.gussoapintegration.regon.searchingparams;
 
 import com.archu.gussoapintegration.validation.KrsFields;
 import com.archu.gussoapintegration.validation.NipFields;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Getter
 @ToString
-public final class SearchingParams {
+public final class SubjectSearchingParams {
 
     /**
      * One value

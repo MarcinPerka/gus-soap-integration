@@ -2,6 +2,8 @@ package com.archu.gussoapintegration.regon;
 
 import com.archu.gussoapintegration.regon.dto.SessionDTO;
 import com.archu.gussoapintegration.regon.dto.SubjectDTO;
+import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
+import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,11 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController
@@ -31,12 +31,12 @@ public class RegonController {
     }
 
     @GetMapping("/subjects")
-    public List<SubjectDTO> getSubject(@Valid SearchingParams searchingParams) {
+    public List<SubjectDTO> getSubject(@Valid SubjectSearchingParams searchingParams) {
         return regonService.getSubjects(searchingParams);
     }
 
     @GetMapping("/full-report")
-    public DanePobierzPelnyRaportResponse getFullReport(@RequestParam String regon, @RequestParam FullReportName fullReportName) {
-        return regonService.getFullReport(regon, fullReportName);
+    public DanePobierzPelnyRaportResponse getFullReport(@Valid FullReportSearchingParams searchingParams) {
+        return regonService.getFullReport(searchingParams);
     }
 }

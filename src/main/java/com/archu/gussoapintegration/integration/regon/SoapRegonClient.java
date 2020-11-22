@@ -1,7 +1,8 @@
 package com.archu.gussoapintegration.integration.regon;
 
 import com.archu.gussoapintegration.integration.regon.model.DaneSzukajPodmiotRoot;
-import com.archu.gussoapintegration.regon.SearchingParams;
+import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
+import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
 import com.gus.regon.wsdl.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,7 +51,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         return zalogujResponse;
     }
 
-    public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SearchingParams searchingParams) {
+    public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SubjectSearchingParams searchingParams) {
         var factory = new ObjectFactory();
 
         var daneSzukajPodmioty = new DaneSzukajPodmioty();
@@ -79,7 +80,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         }
     }
 
-    private ParametryWyszukiwania createParametryWyszukiwania(SearchingParams searchingParams, ObjectFactory factory) {
+    private ParametryWyszukiwania createParametryWyszukiwania(SubjectSearchingParams searchingParams, ObjectFactory factory) {
         var parametryWyszukiwania = new ParametryWyszukiwania();
         if (searchingParams.getNip() != null)
             parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
@@ -98,14 +99,14 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         return parametryWyszukiwania;
     }
 
-    public DanePobierzPelnyRaportResponse getDanePobierzPelnyRaport(String regon, String fullReportName) {
+    public DanePobierzPelnyRaportResponse getDanePobierzPelnyRaport(FullReportSearchingParams searchingParams) {
         var factory = new ObjectFactory();
 
         var danePobierzPelnyRaport = new DanePobierzPelnyRaport();
-        danePobierzPelnyRaport.setPRegon(factory.createDanePobierzPelnyRaportPRegon(regon));
-        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(fullReportName));
+        danePobierzPelnyRaport.setPRegon(factory.createDanePobierzPelnyRaportPRegon(searchingParams.getRegon()));
+        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(searchingParams.getFullReportName()));
 
-        log.debug("Requesting for full report with regon: {} and report name: {}", regon, fullReportName);
+        log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), searchingParams.getFullReportName());
 
         return (DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzPelnyRaport,
