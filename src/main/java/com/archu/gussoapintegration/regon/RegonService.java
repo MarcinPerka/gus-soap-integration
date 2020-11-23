@@ -1,11 +1,8 @@
 package com.archu.gussoapintegration.regon;
 
 import com.archu.gussoapintegration.integration.regon.SoapRegonClient;
-import com.archu.gussoapintegration.regon.dto.SessionDTO;
-import com.archu.gussoapintegration.regon.dto.SubjectDTO;
-import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
-import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
-import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
+import com.archu.gussoapintegration.regon.dto.*;
+import com.archu.gussoapintegration.regon.searchingparams.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,9 +27,8 @@ public class RegonService {
         return regonConverter.convertDaneSzukajPodmiotRootToSubjectDTO(result);
     }
 
-    public DanePobierzPelnyRaportResponse getFullReport(FullReportSearchingParams searchingParams) {
-        var danePobierzPelnyRaport = soapRegonClient.getDanePobierzPelnyRaport(searchingParams);
+    public Object getFullReport(FullReportSearchingParams searchingParams) {
         //TODO convert to dtos to rid off of useless stuff.
-        return danePobierzPelnyRaport;
+        return soapRegonClient.getDanePobierzPelnyRaport(searchingParams);
     }
 }

@@ -36,7 +36,7 @@ public class RegonController {
     }
 
     @GetMapping("/full-report")
-    public DanePobierzPelnyRaportResponse getFullReport(@Valid FullReportSearchingParams searchingParams) {
+    public Object getFullReport(@Valid FullReportSearchingParams searchingParams) {
         return regonService.getFullReport(searchingParams);
     }
 }
