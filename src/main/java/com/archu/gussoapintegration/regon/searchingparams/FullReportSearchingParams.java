@@ -1,7 +1,6 @@
 package com.archu.gussoapintegration.regon.searchingparams;
 
-import com.archu.gussoapintegration.regon.FullReportName;
-import com.archu.gussoapintegration.validation.ValueOfEnum;
+import com.archu.gussoapintegration.regon.reportname.FullReportName;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -15,5 +14,5 @@ public final class FullReportSearchingParams {
     private String regon;
 
 //    @ValueOfEnum(enumClass = FullReportName.class, message = "{validator.enum.searching-params.full-report-name.message}")
-    private FullReportName fullReportName;
+    private FullReportName reportName;
 }

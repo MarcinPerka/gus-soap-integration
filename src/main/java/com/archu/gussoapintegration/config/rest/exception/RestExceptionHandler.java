@@ -17,6 +17,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.ws.soap.SoapFaultException;
+import org.springframework.ws.soap.client.SoapFaultClientException;
 
 @RestControllerAdvice
 @Slf4j
@@ -161,6 +163,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
             MethodArgumentTypeMismatchException ex) {
 
         var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Could not convert parameter.", ex.getClass().getSimpleName());
+        apiError.setDetails(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
+     * Handle SoapFaultClientException.
+     *
+     * @param ex SoapFaultClientException
+     * @return the ApiError object
+     */
+    @ExceptionHandler(SoapFaultClientException.class)
+    private ResponseEntity<Object> handleSoapFaultClientException(
+            SoapFaultClientException ex) {
+        var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Soap fault client.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
         return buildResponseEntity(apiError);
     }

@@ -4,7 +4,7 @@ import com.archu.gussoapintegration.regon.dto.SessionDTO;
 import com.archu.gussoapintegration.regon.dto.SubjectDTO;
 import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
 import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
-import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
+import com.archu.gussoapintegration.regon.searchingparams.SummaryReportSearchingParams;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -38,5 +38,10 @@ public class RegonController {
     @GetMapping("/full-report")
     public Object getFullReport(@Valid FullReportSearchingParams searchingParams) {
         return regonService.getFullReport(searchingParams);
+    }
+
+    @GetMapping("/summary-report")
+    public Object getSummaryReport(@Valid SummaryReportSearchingParams searchingParams) {
+        return regonService.getSummaryReport(searchingParams);
     }
 }

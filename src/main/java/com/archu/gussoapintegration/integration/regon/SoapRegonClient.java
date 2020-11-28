@@ -1,8 +1,9 @@
 package com.archu.gussoapintegration.integration.regon;
 
-import com.archu.gussoapintegration.integration.regon.model.*;
-import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
-import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
+import com.archu.gussoapintegration.integration.regon.model.fullreport.*;
+import com.archu.gussoapintegration.integration.regon.model.subject.DaneSzukajPodmiotRoot;
+import com.archu.gussoapintegration.integration.regon.model.summaryreport.*;
+import com.archu.gussoapintegration.regon.searchingparams.*;
 import com.gus.regon.wsdl.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -96,16 +97,16 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
 
         var danePobierzPelnyRaport = new DanePobierzPelnyRaport();
         danePobierzPelnyRaport.setPRegon(factory.createDanePobierzPelnyRaportPRegon(searchingParams.getRegon()));
-        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(searchingParams.getFullReportName().name()));
+        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(searchingParams.getReportName().name()));
 
-        log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), searchingParams.getFullReportName());
+        log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), searchingParams.getReportName());
 
         var danePobierzPelnyRaportResponse = ((DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzPelnyRaport,
                 SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionId)
         )).getDanePobierzPelnyRaportResult().getValue();
 
-        return switch (searchingParams.getFullReportName()) {
+        return switch (searchingParams.getReportName()) {
             case BIR11OsFizycznaDaneOgolne -> unmarshal(danePobierzPelnyRaportResponse, OsFizycznaDaneOgolneRoot.class).getDane();
             case BIR11OsFizycznaDzialalnoscCeidg -> unmarshal(danePobierzPelnyRaportResponse, OsFizycznaDzialalnoscCeidgRoot.class).getDane();
             case BIR11OsFizycznaDzialalnoscRolnicza -> unmarshal(danePobierzPelnyRaportResponse, OsFizycznaDzialalnoscRolniczaRoot.class).getDane();
@@ -122,6 +123,30 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
             case BIR11JednLokalnaOsPrawnejPkd -> unmarshal(danePobierzPelnyRaportResponse, JednLokalnaOsPrawnejPkdRoot.class).getDane();
             case BIR11OsPrawnaSpCywilnaWspolnicy -> unmarshal(danePobierzPelnyRaportResponse, OsPrawnaSpCywilnaWspolnicyRoot.class).getDane();
             case BIR11TypPodmiotu -> unmarshal(danePobierzPelnyRaportResponse, TypPodmiotuRoot.class).getDane();
+        };
+    }
+
+    public Object getDanePobierzRaportZbiorczy(SummaryReportSearchingParams searchingParams) {
+        var factory = new ObjectFactory();
+
+        var danePobierzRaportZbiorczy = new DanePobierzRaportZbiorczy();
+        danePobierzRaportZbiorczy.setPDataRaportu(factory.createDanePobierzRaportZbiorczyPDataRaportu(searchingParams.getDate().toString()));
+        danePobierzRaportZbiorczy.setPNazwaRaportu(factory.createDanePobierzRaportZbiorczyPNazwaRaportu(searchingParams.getReportName().name()));
+
+        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), searchingParams.getReportName());
+
+        var danePobierzRaportZbiorczyResponse = ((DanePobierzRaportZbiorczyResponse) getWebServiceTemplate().marshalSendAndReceive(
+                danePobierzRaportZbiorczy,
+                SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_RAPORT_ZBIORCZY, sessionId)
+        )).getDanePobierzRaportZbiorczyResult().getValue();
+
+        return switch (searchingParams.getReportName()) {
+            case BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych -> unmarshal(danePobierzRaportZbiorczyResponse, NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
+            case BIR11AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych -> unmarshal(danePobierzRaportZbiorczyResponse, AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
+            case BIR11SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych -> unmarshal(danePobierzRaportZbiorczyResponse, SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
+            case BIR11NoweJednostkiLokalne -> unmarshal(danePobierzRaportZbiorczyResponse, NoweJednostkiLokalneRoot.class).getDane();
+            case BIR11AktualizowaneJednostkiLokalne -> unmarshal(danePobierzRaportZbiorczyResponse, AktualizowaneJednostkiLokalneRoot.class).getDane();
+            case BIR11JednostkiLokalneSkreslone -> unmarshal(danePobierzRaportZbiorczyResponse, SkresloneJednostkiLokalneRoot.class).getDane();
         };
     }
 

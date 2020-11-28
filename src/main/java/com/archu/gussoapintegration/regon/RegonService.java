@@ -31,4 +31,9 @@ public class RegonService {
         //TODO convert to dtos to rid off of useless stuff.
         return soapRegonClient.getDanePobierzPelnyRaport(searchingParams);
     }
+
+    public Object getSummaryReport(SummaryReportSearchingParams searchingParams) {
+        //TODO convert to dtos to rid off of useless stuff.
+        return soapRegonClient.getDanePobierzRaportZbiorczy(searchingParams);
+    }
 }

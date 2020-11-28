@@ -6,7 +6,7 @@
 //
 
 
-package com.archu.gussoapintegration.integration.regon.model;
+package com.archu.gussoapintegration.integration.regon.model.fullreport;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
