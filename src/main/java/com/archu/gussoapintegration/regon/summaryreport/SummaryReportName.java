@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon.reportname;
+package com.archu.gussoapintegration.regon.summaryreport;
 
 public enum SummaryReportName {
     BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych,

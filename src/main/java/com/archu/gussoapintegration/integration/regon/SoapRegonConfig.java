@@ -1,5 +1,8 @@
 package com.archu.gussoapintegration.integration.regon;
 
+import com.archu.gussoapintegration.regon.fullreport.FullReportUnmarshalVisitorImpl;
+import com.archu.gussoapintegration.regon.fullreport.FullReportVisitor;
+import com.gus.regon.wsdl.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,8 +39,13 @@ public class SoapRegonConfig {
     }
 
     @Bean
-    public SoapRegonClient soapClient(Jaxb2Marshaller marshaller, SaajSoapMessageFactory messageFactory) {
-        var client = new SoapRegonClient(userKey);
+    public ObjectFactory objectFactory(){
+        return new ObjectFactory();
+    }
+
+    @Bean
+    public SoapRegonClient soapClient(Jaxb2Marshaller marshaller, SaajSoapMessageFactory messageFactory, ObjectFactory objectFactory, FullReportUnmarshalVisitorImpl fullReportVisitor) {
+        var client = new SoapRegonClient(userKey, objectFactory, fullReportVisitor);
         client.setDefaultUri(apiEndpoint);
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);

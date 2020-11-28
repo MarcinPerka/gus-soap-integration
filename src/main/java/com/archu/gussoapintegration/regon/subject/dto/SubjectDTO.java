@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon.dto;
+package com.archu.gussoapintegration.regon.subject.dto;
 
 import lombok.Builder;
 import lombok.Data;

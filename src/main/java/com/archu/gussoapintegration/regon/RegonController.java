@@ -1,10 +1,9 @@
 package com.archu.gussoapintegration.regon;
 
-import com.archu.gussoapintegration.regon.dto.SessionDTO;
-import com.archu.gussoapintegration.regon.dto.SubjectDTO;
-import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
-import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
-import com.archu.gussoapintegration.regon.searchingparams.SummaryReportSearchingParams;
+import com.archu.gussoapintegration.regon.subject.dto.SubjectDTO;
+import com.archu.gussoapintegration.regon.fullreport.FullReportSearchingParams;
+import com.archu.gussoapintegration.regon.subject.SubjectSearchingParams;
+import com.archu.gussoapintegration.regon.summaryreport.SummaryReportSearchingParams;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -26,7 +25,7 @@ public class RegonController {
     private final RegonService regonService;
 
     @GetMapping("/login")
-    public SessionDTO login() {
+    public String login() {
         return regonService.login();
     }
 

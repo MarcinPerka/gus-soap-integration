@@ -1,8 +1,13 @@
 package com.archu.gussoapintegration.regon;
 
 import com.archu.gussoapintegration.integration.regon.SoapRegonClient;
-import com.archu.gussoapintegration.regon.dto.*;
-import com.archu.gussoapintegration.regon.searchingparams.*;
+import com.archu.gussoapintegration.regon.fullreport.FullReportConverterVisitorImpl;
+import com.archu.gussoapintegration.regon.fullreport.FullReportSearchingParams;
+import com.archu.gussoapintegration.regon.subject.SubjectConverter;
+import com.archu.gussoapintegration.regon.subject.dto.SubjectDTO;
+import com.archu.gussoapintegration.regon.subject.SubjectSearchingParams;
+import com.archu.gussoapintegration.regon.summaryreport.SummaryReportConverterVisitorImpl;
+import com.archu.gussoapintegration.regon.summaryreport.SummaryReportSearchingParams;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,11 +20,12 @@ import java.util.List;
 public class RegonService {
 
     private final SoapRegonClient soapRegonClient;
-    private final RegonConverter regonConverter;
+    private final SubjectConverter regonConverter;
+    private final FullReportConverterVisitorImpl fullReportConverterVisitor;
+//    private final SummaryReportConverterVisitorImpl summaryReportConverterVisitor;
 
-    public SessionDTO login() {
-        var zalogujResponse = soapRegonClient.getZaloguj();
-        return new SessionDTO(zalogujResponse.getZalogujResult().getValue());
+    public String login() {
+        return soapRegonClient.getZaloguj();
     }
 
     public List<SubjectDTO> getSubjects(SubjectSearchingParams searchingParams) {

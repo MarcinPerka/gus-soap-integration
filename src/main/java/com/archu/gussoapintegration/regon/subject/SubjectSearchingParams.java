@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon.searchingparams;
+package com.archu.gussoapintegration.regon.subject;
 
 import com.archu.gussoapintegration.validation.KrsFields;
 import com.archu.gussoapintegration.validation.NipFields;

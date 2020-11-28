@@ -1,7 +1,7 @@
-package com.archu.gussoapintegration.regon;
+package com.archu.gussoapintegration.regon.subject;
 
 import com.archu.gussoapintegration.integration.regon.model.subject.DaneSzukajPodmiotRoot;
-import com.archu.gussoapintegration.regon.dto.*;
+import com.archu.gussoapintegration.regon.subject.dto.SubjectDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class RegonConverter {
+public class SubjectConverter {
 
     public List<SubjectDTO> convertDaneSzukajPodmiotRootToSubjectDTO(List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> data) {
         return data.stream().map(it -> SubjectDTO.builder()
