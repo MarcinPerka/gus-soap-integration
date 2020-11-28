@@ -1,7 +1,8 @@
 package com.archu.gussoapintegration.integration.regon;
 
 import com.archu.gussoapintegration.integration.regon.model.*;
-import com.archu.gussoapintegration.regon.searchingparams.*;
+import com.archu.gussoapintegration.regon.searchingparams.FullReportSearchingParams;
+import com.archu.gussoapintegration.regon.searchingparams.SubjectSearchingParams;
 import com.gus.regon.wsdl.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,13 +12,10 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
 import java.io.StringReader;
 import java.util.List;
 
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.*;
-import static com.archu.gussoapintegration.regon.FullReportName.*;
-import static com.archu.gussoapintegration.regon.FullReportName.BIR11OsFizycznaPkd;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -60,7 +58,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
         daneSzukajPodmioty.setPParametryWyszukiwania(factory.createDaneSzukajPodmiotyPParametryWyszukiwania(parametryWyszukiwania));
 
         log.debug("Requesting for subject with searching params: {}", searchingParams);
-        var daneSzukajPodmiotyResponse =  ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)))
+        var daneSzukajPodmiotyResponse = ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionId)))
                 .getDaneSzukajPodmiotyResult()
                 .getValue();
 
@@ -75,7 +73,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
             jaxbContext = JAXBContext.newInstance(rootClass);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (T) jaxbUnmarshaller.unmarshal(new StringReader(xml));
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
@@ -83,20 +81,13 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
 
     private ParametryWyszukiwania createParametryWyszukiwania(SubjectSearchingParams searchingParams, ObjectFactory factory) {
         var parametryWyszukiwania = new ParametryWyszukiwania();
-        if (searchingParams.getNip() != null)
-            parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
-        if (searchingParams.getKrs() != null)
-            parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
-        if (searchingParams.getRegon() != null)
-            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
-        if (searchingParams.getRegonsWith9Digits() != null)
-            parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(String.join(",", searchingParams.getRegonsWith9Digits())));
-        if (searchingParams.getRegonsWith14Digits() != null)
-            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegony14Zn(String.join(",", searchingParams.getRegonsWith14Digits())));
-        if (searchingParams.getKrses() != null)
-            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaKrsy(String.join(",", searchingParams.getKrses())));
-        if (searchingParams.getNips() != null)
-            parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaNipy(String.join(",", searchingParams.getNips())));
+        parametryWyszukiwania.setNip(factory.createParametryWyszukiwaniaNip(searchingParams.getNip()));
+        parametryWyszukiwania.setKrs(factory.createParametryWyszukiwaniaKrs(searchingParams.getKrs()));
+        parametryWyszukiwania.setRegon(factory.createParametryWyszukiwaniaRegon(searchingParams.getRegon()));
+        parametryWyszukiwania.setRegony9Zn(factory.createParametryWyszukiwaniaRegony9Zn(searchingParams.getRegonsWith9Digits() != null ? String.join(",", searchingParams.getRegonsWith9Digits()) : null));
+        parametryWyszukiwania.setRegony14Zn(factory.createParametryWyszukiwaniaRegony14Zn(searchingParams.getRegonsWith14Digits() != null ? String.join(",", searchingParams.getRegonsWith14Digits()) : null));
+        parametryWyszukiwania.setKrsy(factory.createParametryWyszukiwaniaKrsy(searchingParams.getKrses() != null ? String.join(",", searchingParams.getKrses()) : null));
+        parametryWyszukiwania.setNipy(factory.createParametryWyszukiwaniaNipy(searchingParams.getNips() != null ? String.join(",", searchingParams.getNips()) : null));
         return parametryWyszukiwania;
     }
 
@@ -109,7 +100,7 @@ public class SoapRegonClient extends WebServiceGatewaySupport {
 
         log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), searchingParams.getFullReportName());
 
-        var danePobierzPelnyRaportResponse =  ((DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
+        var danePobierzPelnyRaportResponse = ((DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzPelnyRaport,
                 SoapRegonUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionId)
         )).getDanePobierzPelnyRaportResult().getValue();
