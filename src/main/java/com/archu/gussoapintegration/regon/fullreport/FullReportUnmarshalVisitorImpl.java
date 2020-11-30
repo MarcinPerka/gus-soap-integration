@@ -4,6 +4,8 @@ import com.archu.gussoapintegration.integration.regon.SoapRegonUtils;
 import com.archu.gussoapintegration.integration.regon.model.fullreport.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class FullReportUnmarshalVisitorImpl implements FullReportVisitor<Object, String> {
 
@@ -12,82 +14,82 @@ public class FullReportUnmarshalVisitorImpl implements FullReportVisitor<Object,
     }
 
     @Override
-    public Object visitOsFizycznaDaneOgolne(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaDaneOgolneRoot.class);
+    public OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData visitOsFizycznaDaneOgolne(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaDaneOgolneRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaDzialalnoscCeidg(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscCeidgRoot.class);
+    public OsFizycznaDzialalnoscCeidgRoot.OsFizycznaDzialalnoscCeidgData visitOsFizycznaDzialalnoscCeidg(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscCeidgRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaDzialalnoscRolnicza(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscRolniczaRoot.class);
+    public OsFizycznaDzialalnoscRolniczaRoot.OsFIzycznaDzialalnoscRolniczaData visitOsFizycznaDzialalnoscRolnicza(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscRolniczaRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaDzialalnoscPozostala(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscPozostalaRoot.class);
+    public OsFizycznaDzialalnoscPozostalaRoot.OsFizycznaDzialalnoscPozostalaData visitOsFizycznaDzialalnoscPozostala(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscPozostalaRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaDzialalnoscSkreslonaDo20141108(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscSkreslonaDo20141108Root.class);
+    public OsFizycznaDzialalnoscSkreslonaDo20141108Root.OsFizycznaDzialalnoscSkreslonaDo20141108Data visitOsFizycznaDzialalnoscSkreslonaDo20141108(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaDzialalnoscSkreslonaDo20141108Root.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaPkd(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaPkdRoot.class);
+    public List<OsFizycznaPkdRoot.OsFizycznaPkdData> visitOsFizycznaPkd(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaPkdRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsFizycznaListaJednLokalnych(String data) {
-        return SoapRegonUtils.unmarshal(data, OsFizycznaListaJednLokalnychRoot.class);
+    public List<OsFizycznaListaJednLokalnychRoot.OsFizycznaListaJednLokalnychData> visitOsFizycznaListaJednLokalnych(String data) {
+        return SoapRegonUtils.unmarshal(data, OsFizycznaListaJednLokalnychRoot.class).getDane();
     }
 
     @Override
-    public Object visitJednLokalnaOsFizycznej(String data) {
-        return SoapRegonUtils.unmarshal(data, JednLokalnaOsFizycznejRoot.class);
+    public JednLokalnaOsFizycznejRoot.JednLokalnaOsFizycznejData visitJednLokalnaOsFizycznej(String data) {
+        return SoapRegonUtils.unmarshal(data, JednLokalnaOsFizycznejRoot.class).getDane();
     }
 
     @Override
-    public Object visitJednLokalnaOsFizycznejPkd(String data) {
-        return SoapRegonUtils.unmarshal(data, JednLokalnaOsFizycznejPkdRoot.class);
+    public List<JednLokalnaOsFizycznejPkdRoot.JednLokalnaOsFizycznejPkdData> visitJednLokalnaOsFizycznejPkd(String data) {
+        return SoapRegonUtils.unmarshal(data, JednLokalnaOsFizycznejPkdRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsPrawna(String data) {
-        return SoapRegonUtils.unmarshal(data, OsPrawnaRoot.class);
+    public OsPrawnaRoot.OsPrawnaData visitOsPrawna(String data) {
+        return SoapRegonUtils.unmarshal(data, OsPrawnaRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsPrawnaPkd(String data) {
-        return SoapRegonUtils.unmarshal(data, OsPrawnaPkdRoot.class);
+    public List<OsPrawnaPkdRoot.OsPrawnaPkdData> visitOsPrawnaPkd(String data) {
+        return SoapRegonUtils.unmarshal(data, OsPrawnaPkdRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsPrawnaListaJednLokalnych(String data) {
-        return SoapRegonUtils.unmarshal(data, OsPrawnaListaJednLokalnychRoot.class);
+    public List<OsPrawnaListaJednLokalnychRoot.OsPrawnaListaJednLokalnychData> visitOsPrawnaListaJednLokalnych(String data) {
+        return SoapRegonUtils.unmarshal(data, OsPrawnaListaJednLokalnychRoot.class).getDane();
     }
 
     @Override
-    public Object visitJednLokalnaOsPrawnej(String data) {
-        return SoapRegonUtils.unmarshal(data, JednLokalnaOsPrawnejRoot.class);
+    public JednLokalnaOsPrawnejRoot.JednLokalnaOsPrawnejData visitJednLokalnaOsPrawnej(String data) {
+        return SoapRegonUtils.unmarshal(data, JednLokalnaOsPrawnejRoot.class).getDane();
     }
 
     @Override
-    public Object visitJednLokalnaOsPrawnejPkd(String data) {
-        return SoapRegonUtils.unmarshal(data, JednLokalnaOsPrawnejPkdRoot.class);
+    public List<JednLokalnaOsPrawnejPkdRoot.JednLokalnaOsPrawnejPkdData> visitJednLokalnaOsPrawnejPkd(String data) {
+        return SoapRegonUtils.unmarshal(data, JednLokalnaOsPrawnejPkdRoot.class).getDane();
     }
 
     @Override
-    public Object visitOsPrawnaSpCywilnaWspolnicy(String data) {
-        return SoapRegonUtils.unmarshal(data, OsPrawnaSpCywilnaWspolnicyRoot.class);
+    public List<OsPrawnaSpCywilnaWspolnicyRoot.OsPrawnaSpCywilnaWspolnicyDane> visitOsPrawnaSpCywilnaWspolnicy(String data) {
+        return SoapRegonUtils.unmarshal(data, OsPrawnaSpCywilnaWspolnicyRoot.class).getDane();
     }
 
     @Override
-    public Object visitTypPodmiotu(String data) {
-        return SoapRegonUtils.unmarshal(data, TypPodmiotuRoot.class);
+    public TypPodmiotuRoot.TypPodmiotuData visitTypPodmiotu(String data) {
+        return SoapRegonUtils.unmarshal(data, TypPodmiotuRoot.class).getDane();
     }
 }

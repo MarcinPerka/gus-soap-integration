@@ -1,5 +1,7 @@
 package com.archu.gussoapintegration.regon.fullreport;
 
+import java.util.List;
+
 public interface FullReportVisitor<T, J> {
     T visitOsFizycznaDaneOgolne(J data);
 

@@ -2,6 +2,7 @@ package com.archu.gussoapintegration.integration.regon;
 
 import com.archu.gussoapintegration.regon.fullreport.FullReportUnmarshalVisitorImpl;
 import com.archu.gussoapintegration.regon.fullreport.FullReportVisitor;
+import com.archu.gussoapintegration.regon.summaryreport.SummaryReportUnmarshalVisitorImpl;
 import com.gus.regon.wsdl.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -44,12 +45,12 @@ public class SoapRegonConfig {
     }
 
     @Bean
-    public SoapRegonClient soapClient(Jaxb2Marshaller marshaller, SaajSoapMessageFactory messageFactory, ObjectFactory objectFactory, FullReportUnmarshalVisitorImpl fullReportVisitor) {
-        var client = new SoapRegonClient(userKey, objectFactory, fullReportVisitor);
+    public SoapRegonClient soapClient(SummaryReportUnmarshalVisitorImpl summaryReportVisitor, FullReportUnmarshalVisitorImpl fullReportVisitor) {
+        var client = new SoapRegonClient(userKey, objectFactory(), fullReportVisitor, summaryReportVisitor);
         client.setDefaultUri(apiEndpoint);
-        client.setMarshaller(marshaller);
-        client.setUnmarshaller(marshaller);
-        client.getWebServiceTemplate().setMessageFactory(messageFactory);
+        client.setMarshaller(marshaller());
+        client.setUnmarshaller(marshaller());
+        client.getWebServiceTemplate().setMessageFactory(messageFactory());
         return client;
     }
 
