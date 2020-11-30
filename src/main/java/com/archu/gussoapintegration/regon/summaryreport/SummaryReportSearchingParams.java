@@ -15,7 +15,4 @@ public final class SummaryReportSearchingParams {
     @NotNull(message = "{validator.not-null.searching-params.date.message}")
     private LocalDate date;
 
-    //    @ValueOfEnum(enumClass = SummaryReportName.class, message = "{validator.enum.searching-params.summary-report-name.message}")
-    @NotNull(message = "{validator.not-null.searching-params.report-name.message}")
-    private SummaryReportName reportName;
 }

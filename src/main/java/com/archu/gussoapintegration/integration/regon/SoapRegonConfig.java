@@ -1,8 +1,9 @@
 package com.archu.gussoapintegration.integration.regon;
 
-import com.archu.gussoapintegration.regon.fullreport.FullReportUnmarshalVisitorImpl;
-import com.archu.gussoapintegration.regon.fullreport.FullReportVisitor;
-import com.archu.gussoapintegration.regon.summaryreport.SummaryReportUnmarshalVisitorImpl;
+import com.archu.gussoapintegration.integration.regon.fullreport.FullReportClient;
+import com.archu.gussoapintegration.integration.regon.session.SessionClient;
+import com.archu.gussoapintegration.integration.regon.subject.SubjectClient;
+import com.archu.gussoapintegration.integration.regon.summaryreport.SummaryReportClient;
 import com.gus.regon.wsdl.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -45,8 +46,39 @@ public class SoapRegonConfig {
     }
 
     @Bean
-    public SoapRegonClient soapClient(SummaryReportUnmarshalVisitorImpl summaryReportVisitor, FullReportUnmarshalVisitorImpl fullReportVisitor) {
-        var client = new SoapRegonClient(userKey, objectFactory(), fullReportVisitor, summaryReportVisitor);
+    public SummaryReportClient summaryReportClient() {
+        var client = new SummaryReportClient(objectFactory(), sessionClient());
+        client.setDefaultUri(apiEndpoint);
+        client.setMarshaller(marshaller());
+        client.setUnmarshaller(marshaller());
+        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        return client;
+    }
+
+    @Bean
+    public SessionClient sessionClient() {
+        var client = new SessionClient(userKey, objectFactory());
+        client.setDefaultUri(apiEndpoint);
+        client.setMarshaller(marshaller());
+        client.setUnmarshaller(marshaller());
+        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        return client;
+    }
+
+    @Bean
+    public FullReportClient fullReportClient() {
+        var client = new FullReportClient(objectFactory(), sessionClient());
+        client.setDefaultUri(apiEndpoint);
+        client.setMarshaller(marshaller());
+        client.setUnmarshaller(marshaller());
+        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        return client;
+    }
+
+
+    @Bean
+    public SubjectClient subjectClient() {
+        var client = new SubjectClient(objectFactory(), sessionClient());
         client.setDefaultUri(apiEndpoint);
         client.setMarshaller(marshaller());
         client.setUnmarshaller(marshaller());

@@ -1,6 +1,6 @@
 package com.archu.gussoapintegration.regon.fullreport;
 
-import com.archu.gussoapintegration.integration.regon.model.fullreport.*;
+import com.archu.gussoapintegration.integration.regon.fullreport.model.*;
 import com.archu.gussoapintegration.regon.fullreport.dto.FullReportBaseDTO;
 import org.springframework.stereotype.Component;
 

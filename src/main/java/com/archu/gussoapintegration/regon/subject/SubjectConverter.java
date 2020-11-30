@@ -1,6 +1,6 @@
 package com.archu.gussoapintegration.regon.subject;
 
-import com.archu.gussoapintegration.integration.regon.model.subject.DaneSzukajPodmiotRoot;
+import com.archu.gussoapintegration.integration.regon.subject.model.DaneSzukajPodmiotRoot;
 import com.archu.gussoapintegration.regon.subject.dto.SubjectDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
