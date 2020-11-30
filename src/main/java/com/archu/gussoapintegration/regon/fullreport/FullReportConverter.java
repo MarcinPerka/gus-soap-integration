@@ -2,11 +2,13 @@ package com.archu.gussoapintegration.regon.fullreport;
 
 import com.archu.gussoapintegration.integration.regon.fullreport.model.*;
 import com.archu.gussoapintegration.regon.fullreport.dto.FullReportBaseDTO;
+import com.archu.gussoapintegration.regon.fullreport.dto.NaturalPersonDTO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FullReportConverter {
-    public FullReportBaseDTO convertOsFizycznaDaneOgolne(OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData data) {
+    //TODO(Not finished)
+    public NaturalPersonDTO convertOsFizycznaDaneOgolneToNaturalPersonDTO(OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData data) {
         return null;
     }
 

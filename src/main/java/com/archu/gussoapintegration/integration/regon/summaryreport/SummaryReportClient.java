@@ -3,7 +3,6 @@ package com.archu.gussoapintegration.integration.regon.summaryreport;
 import com.archu.gussoapintegration.integration.SoapUtils;
 import com.archu.gussoapintegration.integration.regon.session.SessionClient;
 import com.archu.gussoapintegration.integration.regon.summaryreport.model.*;
-import com.archu.gussoapintegration.regon.summaryreport.SummaryReportName;
 import com.archu.gussoapintegration.regon.summaryreport.SummaryReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzRaportZbiorczy;
 import com.gus.regon.wsdl.DanePobierzRaportZbiorczyResponse;

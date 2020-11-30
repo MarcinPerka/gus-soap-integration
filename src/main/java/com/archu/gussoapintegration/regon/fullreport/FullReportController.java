@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.regon.fullreport;
 
+import com.archu.gussoapintegration.regon.fullreport.dto.NaturalPersonDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -19,8 +20,8 @@ public class FullReportController {
 
     private final FullReportService fullReportService;
 
-    @GetMapping
-    public Object getFullReport(@Valid FullReportSearchingParams searchingParams) {
-        return fullReportService.getFullReport(searchingParams);
+    @GetMapping("/natural-person")
+    public NaturalPersonDTO getNaturalPerson(@Valid FullReportSearchingParams searchingParams) {
+        return fullReportService.getNaturalPerson(searchingParams);
     }
 }

@@ -21,33 +21,33 @@ public class SummaryReportController {
 
     private final SummaryReportService summaryReportService;
 
-    @GetMapping("/BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych")
-    public List<SummaryReportBaseDTO> getSummaryReport1(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport1(searchingParams);
+    @GetMapping("/new-legal-entities-and-activities-of-natural-people")
+    public List<SummaryReportBaseDTO> getNewLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getNewLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("/BIR11AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych")
-    public List<SummaryReportBaseDTO> getSummaryReport2(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport2(searchingParams);
+    @GetMapping("/updated-legal-entities-and-activities-of-natural-people")
+    public List<SummaryReportBaseDTO> getUpdatedLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getUpdatedLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("/BIR11SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych")
-    public List<SummaryReportBaseDTO> getSummaryReport3(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport3(searchingParams);
+    @GetMapping("deleted-legal-entities-and-activities-of-natural-people")
+    public List<SummaryReportBaseDTO> getDeletedLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getDeletedLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("/BIR11NoweJednostkiLokalne")
-    public List<SummaryReportBaseDTO> getSummaryReport4(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport4(searchingParams);
+    @GetMapping("/new-local-units")
+    public List<SummaryReportBaseDTO> getNewLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getNewLocalUnits(searchingParams);
     }
 
-    @GetMapping("/BIR11AktualizowaneJednostkiLokalne")
-    public List<SummaryReportBaseDTO> getSummaryReport5(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport5(searchingParams);
+    @GetMapping("/updated-local-units")
+    public List<SummaryReportBaseDTO> getUpdatedLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getUpdatedLocalUnits(searchingParams);
     }
 
-    @GetMapping("/BIR11JednostkiLokalneSkreslone")
-    public List<SummaryReportBaseDTO> getSummaryReport6(@Valid SummaryReportSearchingParams searchingParams) {
-        return summaryReportService.getSummaryReport6(searchingParams);
+    @GetMapping("/deleted-local-units")
+    public List<SummaryReportBaseDTO> getDeletedLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
+        return summaryReportService.getDeletedLocalUnits(searchingParams);
     }
 }

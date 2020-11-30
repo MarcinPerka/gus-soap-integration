@@ -14,5 +14,4 @@ public final class SummaryReportSearchingParams {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull(message = "{validator.not-null.searching-params.date.message}")
     private LocalDate date;
-
 }

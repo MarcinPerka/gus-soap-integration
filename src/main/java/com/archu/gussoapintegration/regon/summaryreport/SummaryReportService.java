@@ -17,32 +17,32 @@ public class SummaryReportService {
     private final SummaryReportClient summaryReportClient;
     private final SummaryReportConverter summaryReportConverter;
 
-    public List<SummaryReportBaseDTO> getSummaryReport1(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getNewLegalEntitiesAndActivitiesOfNaturalPeople(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getNowePodmiotyPrawneOrazDzialalnosciOsFizycznych(searchingParams);
         return result.stream().map(summaryReportConverter::convertNowePodmiotyPrawneOrazDzialalnosciOsFizycznychDataToSummaryReportBaseDTO).collect(Collectors.toList());
     }
 
-    public List<SummaryReportBaseDTO> getSummaryReport2(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getUpdatedLegalEntitiesAndActivitiesOfNaturalPeople(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getAktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych(searchingParams);
         return result.stream().map(summaryReportConverter::convertAktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychToSummaryReportBaseDTO).collect(Collectors.toList());
     }
 
-    public List<SummaryReportBaseDTO> getSummaryReport3(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getDeletedLegalEntitiesAndActivitiesOfNaturalPeople(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getSkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych(searchingParams);
         return result.stream().map(summaryReportConverter::convertSkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychToSummaryReportBaseDTO).collect(Collectors.toList());
     }
 
-    public List<SummaryReportBaseDTO> getSummaryReport4(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getNewLocalUnits(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getNoweJednostkiLokalne(searchingParams);
         return result.stream().map(summaryReportConverter::convertNoweJednostkiLokalneToSummaryReportBaseDTO).collect(Collectors.toList());
     }
 
-    public List<SummaryReportBaseDTO> getSummaryReport5(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getUpdatedLocalUnits(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getAktualizowaneJednostkiLokalne(searchingParams);
         return result.stream().map(summaryReportConverter::convertAktualizowaneJednostkiLokalneToSummaryReportBaseDTO).collect(Collectors.toList());
     }
 
-    public List<SummaryReportBaseDTO> getSummaryReport6(SummaryReportSearchingParams searchingParams) {
+    public List<SummaryReportBaseDTO> getDeletedLocalUnits(SummaryReportSearchingParams searchingParams) {
         var result = summaryReportClient.getJednostkiLokalneSkreslone(searchingParams);
         return result.stream().map(summaryReportConverter::convertJednostkiLokalneSkresloneToSummaryReportBaseDTO).collect(Collectors.toList());
     }

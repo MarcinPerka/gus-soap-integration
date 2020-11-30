@@ -1,6 +1,7 @@
 package com.archu.gussoapintegration.integration.regon.fullreport;
 
 import com.archu.gussoapintegration.integration.SoapUtils;
+import com.archu.gussoapintegration.integration.regon.fullreport.model.OsFizycznaDaneOgolneRoot;
 import com.archu.gussoapintegration.integration.regon.session.SessionClient;
 import com.archu.gussoapintegration.regon.fullreport.FullReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzPelnyRaport;
@@ -21,17 +22,22 @@ public class FullReportClient extends WebServiceGatewaySupport {
 
     private final SessionClient sessionClient;
 
-    public Object getDanePobierzPelnyRaport(FullReportSearchingParams searchingParams) {
+    //TODO(Not finished)
+
+
+    public OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData getOsFizycznaDaneOgolne(FullReportSearchingParams searchingParams) {
         var danePobierzPelnyRaport = new DanePobierzPelnyRaport();
         danePobierzPelnyRaport.setPRegon(factory.createDanePobierzPelnyRaportPRegon(searchingParams.getRegon()));
-        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(searchingParams.getReportName().name()));
+        danePobierzPelnyRaport.setPNazwaRaportu(factory.createDanePobierzPelnyRaportPNazwaRaportu(FullReportName.BIR11OsFizycznaDaneOgolne.name()));
 
-        log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), searchingParams.getReportName());
+        log.debug("Requesting for full report with regon: {} and report name: {}", searchingParams.getRegon(), FullReportName.BIR11OsFizycznaDaneOgolne.name());
 
-        return ((DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
+        var danePobierzPelnyRaportResponse = ((DanePobierzPelnyRaportResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzPelnyRaport,
                 SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionClient.getSessionId())
         )).getDanePobierzPelnyRaportResult().getValue();
+
+        return SoapUtils.unmarshal(danePobierzPelnyRaportResponse, OsFizycznaDaneOgolneRoot.class).getDane();
     }
 
 }

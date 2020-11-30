@@ -1,4 +1,4 @@
-package com.archu.gussoapintegration.regon.fullreport;
+package com.archu.gussoapintegration.integration.regon.fullreport;
 
 public enum FullReportName {
     BIR11OsFizycznaDaneOgolne,
