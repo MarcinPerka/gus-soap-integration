@@ -299,17 +299,17 @@ import javax.xml.bind.annotation.*;
 public class OsFizycznaDzialalnoscRolniczaRoot {
 
     @XmlElement(required = true)
-    protected OsFIzycznaDzialalnoscRolniczaData dane;
+    protected OsFizycznaDzialalnoscRolniczaData dane;
 
     /**
      * Gets the value of the dane property.
      * 
      * @return
      *     possible object is
-     *     {@link OsFIzycznaDzialalnoscRolniczaData }
+     *     {@link OsFizycznaDzialalnoscRolniczaData }
      *     
      */
-    public OsFIzycznaDzialalnoscRolniczaData getDane() {
+    public OsFizycznaDzialalnoscRolniczaData getDane() {
         return dane;
     }
 
@@ -318,10 +318,10 @@ public class OsFizycznaDzialalnoscRolniczaRoot {
      * 
      * @param value
      *     allowed object is
-     *     {@link OsFIzycznaDzialalnoscRolniczaData }
+     *     {@link OsFizycznaDzialalnoscRolniczaData }
      *     
      */
-    public void setDane(OsFIzycznaDzialalnoscRolniczaData value) {
+    public void setDane(OsFizycznaDzialalnoscRolniczaData value) {
         this.dane = value;
     }
 
@@ -635,7 +635,7 @@ public class OsFizycznaDzialalnoscRolniczaRoot {
         "fizAdSiedzMiejscowoscPocztyNazwa",
         "fizAdSiedzUlicaNazwa"
     })
-    public static class OsFIzycznaDzialalnoscRolniczaData {
+    public static class OsFizycznaDzialalnoscRolniczaData {
 
         @XmlElement(name = "fiz_regon9")
         protected String fizRegon9;

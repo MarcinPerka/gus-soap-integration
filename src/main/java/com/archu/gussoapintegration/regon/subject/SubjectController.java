@@ -22,7 +22,7 @@ public class SubjectController {
     private final SubjectService subjectService;
 
     @GetMapping
-    public List<SubjectDTO> getSubject(@Valid SubjectSearchingParams searchingParams) {
+    public List<SubjectDTO> getSubjects(@Valid SubjectSearchingParams searchingParams) {
         return subjectService.getSubjects(searchingParams);
     }
 

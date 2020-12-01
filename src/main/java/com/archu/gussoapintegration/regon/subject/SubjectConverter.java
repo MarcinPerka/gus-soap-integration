@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SubjectConverter {
 
-    public SubjectDTO convertDaneSzukajPodmiotDataToSubjectDTO(DaneSzukajPodmiotRoot.DaneSzukajPodmiotData data) {
+    public SubjectDTO convert(DaneSzukajPodmiotRoot.DaneSzukajPodmiotData data) {
         return SubjectDTO.builder()
                 .regon(data.getRegon())
                 .nip(data.getNip())

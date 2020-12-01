@@ -19,6 +19,6 @@ public class SubjectService {
 
     public List<SubjectDTO> getSubjects(SubjectSearchingParams searchingParams) {
         var result = subjectClient.getDaneSzukajPodmiot(searchingParams);
-        return result.stream().map(regonConverter::convertDaneSzukajPodmiotDataToSubjectDTO).collect(Collectors.toList());
+        return result.stream().map(regonConverter::convert).collect(Collectors.toList());
     }
 }

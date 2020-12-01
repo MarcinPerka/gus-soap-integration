@@ -21,32 +21,32 @@ public class SummaryReportController {
 
     private final SummaryReportService summaryReportService;
 
-    @GetMapping("/new-legal-entities-and-activities-of-natural-people")
+    @GetMapping("/legal-entities-and-activities-of-natural-people/new")
     public List<SummaryReportBaseDTO> getNewLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getNewLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("/updated-legal-entities-and-activities-of-natural-people")
+    @GetMapping("/legal-entities-and-activities-of-natural-people/updated")
     public List<SummaryReportBaseDTO> getUpdatedLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getUpdatedLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("deleted-legal-entities-and-activities-of-natural-people")
+    @GetMapping("/legal-entities-and-activities-of-natural-people/deleted")
     public List<SummaryReportBaseDTO> getDeletedLegalEntitiesAndActivitiesOfNaturalPeople(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getDeletedLegalEntitiesAndActivitiesOfNaturalPeople(searchingParams);
     }
 
-    @GetMapping("/new-local-units")
+    @GetMapping("/local-units/new")
     public List<SummaryReportBaseDTO> getNewLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getNewLocalUnits(searchingParams);
     }
 
-    @GetMapping("/updated-local-units")
+    @GetMapping("/local-units/updated")
     public List<SummaryReportBaseDTO> getUpdatedLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getUpdatedLocalUnits(searchingParams);
     }
 
-    @GetMapping("/deleted-local-units")
+    @GetMapping("/local-units/deleted")
     public List<SummaryReportBaseDTO> getDeletedLocalUnits(@Valid SummaryReportSearchingParams searchingParams) {
         return summaryReportService.getDeletedLocalUnits(searchingParams);
     }

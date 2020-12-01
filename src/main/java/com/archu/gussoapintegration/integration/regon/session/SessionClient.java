@@ -1,6 +1,5 @@
 package com.archu.gussoapintegration.integration.regon.session;
 
-import com.archu.gussoapintegration.integration.SoapUtils;
 import com.gus.regon.wsdl.ObjectFactory;
 import com.gus.regon.wsdl.Zaloguj;
 import com.gus.regon.wsdl.ZalogujResponse;
@@ -12,6 +11,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.annotation.PostConstruct;
 
+import static com.archu.gussoapintegration.integration.SoapUtils.prepareSoapActionCallback;
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.WSA_ACTION_ZALOGUJ;
 
 @Slf4j
@@ -31,20 +31,23 @@ public class SessionClient extends WebServiceGatewaySupport {
     }
 
     public String getZaloguj() {
+        var zaloguj = createZaloguj();
+        log.debug("Requesting for login sid");
+        sessionId = callZalogujEndpoint(zaloguj);
+        return sessionId;
+    }
+
+    private String callZalogujEndpoint(Zaloguj zaloguj) {
+        return ((ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(
+                zaloguj, prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionId)
+        )).getZalogujResult().getValue();
+    }
+
+    private Zaloguj createZaloguj() {
         var zaloguj = new Zaloguj();
         var pKluczUzytkownika = factory.createZalogujPKluczUzytkownika(USER_KEY);
         zaloguj.setPKluczUzytkownika(pKluczUzytkownika);
-
-        var zalogujResponse = (ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(
-                zaloguj,
-                SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionId)
-        );
-
-        log.debug("Requesting for login sid");
-
-        sessionId = zalogujResponse.getZalogujResult().getValue();
-
-        return sessionId;
+        return zaloguj;
     }
 
     @Scheduled(fixedRateString = "${soap.regon.session-refresh}")

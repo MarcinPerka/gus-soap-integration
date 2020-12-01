@@ -7,27 +7,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class SummaryReportConverter {
 
-    public SummaryReportBaseDTO convertNowePodmiotyPrawneOrazDzialalnosciOsFizycznychDataToSummaryReportBaseDTO(NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.NowePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
+    public SummaryReportBaseDTO convert(NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.NowePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 
-    public SummaryReportBaseDTO convertAktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychToSummaryReportBaseDTO(AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
+    public SummaryReportBaseDTO convert(AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 
-    public SummaryReportBaseDTO convertSkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychToSummaryReportBaseDTO(SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
+    public SummaryReportBaseDTO convert(SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 
-    public SummaryReportBaseDTO convertNoweJednostkiLokalneToSummaryReportBaseDTO(NoweJednostkiLokalneRoot.NoweJednostkiLokalneData data) {
+    public SummaryReportBaseDTO convert(NoweJednostkiLokalneRoot.NoweJednostkiLokalneData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 
-    public SummaryReportBaseDTO convertAktualizowaneJednostkiLokalneToSummaryReportBaseDTO(AktualizowaneJednostkiLokalneRoot.AktualizowaneJednostkiLokalneData data) {
+    public SummaryReportBaseDTO convert(AktualizowaneJednostkiLokalneRoot.AktualizowaneJednostkiLokalneData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 
-    public SummaryReportBaseDTO convertJednostkiLokalneSkresloneToSummaryReportBaseDTO(SkresloneJednostkiLokalneRoot.SkresloneJednostkiLokalneData data) {
+    public SummaryReportBaseDTO convert(SkresloneJednostkiLokalneRoot.SkresloneJednostkiLokalneData data) {
         return new SummaryReportBaseDTO(data.getRegon());
     }
 }

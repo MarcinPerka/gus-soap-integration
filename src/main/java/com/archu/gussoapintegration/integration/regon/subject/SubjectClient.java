@@ -25,17 +25,23 @@ public class SubjectClient extends WebServiceGatewaySupport {
     private final SessionClient sessionClient;
 
     public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SubjectSearchingParams searchingParams) {
+        var daneSzukajPodmioty = createDaneSzukajPodmioty(searchingParams);
+        log.debug("Requesting for subject with searching params: {}", searchingParams);
+        var daneSzukajPodmiotyResponse = callDaneSzukajPodmiotyEndpoint(daneSzukajPodmioty);
+        return SoapUtils.unmarshal(daneSzukajPodmiotyResponse, DaneSzukajPodmiotRoot.class).getDane();
+    }
+
+    private String callDaneSzukajPodmiotyEndpoint(DaneSzukajPodmioty daneSzukajPodmioty) {
+        return ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionClient.getSessionId())))
+                .getDaneSzukajPodmiotyResult()
+                .getValue();
+    }
+
+    private DaneSzukajPodmioty createDaneSzukajPodmioty(SubjectSearchingParams searchingParams) {
         var daneSzukajPodmioty = new DaneSzukajPodmioty();
         ParametryWyszukiwania parametryWyszukiwania = createParametryWyszukiwania(searchingParams, factory);
         daneSzukajPodmioty.setPParametryWyszukiwania(factory.createDaneSzukajPodmiotyPParametryWyszukiwania(parametryWyszukiwania));
-
-        log.debug("Requesting for subject with searching params: {}", searchingParams);
-        var daneSzukajPodmiotyResponse = ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionClient.getSessionId())))
-                .getDaneSzukajPodmiotyResult()
-                .getValue();
-
-        var daneSzukajPodmiotRoot = SoapUtils.unmarshal(daneSzukajPodmiotyResponse, DaneSzukajPodmiotRoot.class);
-        return daneSzukajPodmiotRoot.getDane();
+        return daneSzukajPodmioty;
     }
 
 
