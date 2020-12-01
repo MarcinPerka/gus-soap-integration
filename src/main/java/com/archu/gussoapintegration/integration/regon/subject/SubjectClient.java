@@ -26,7 +26,7 @@ public class SubjectClient extends WebServiceGatewaySupport {
 
     public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SubjectSearchingParams searchingParams) {
         var daneSzukajPodmioty = createDaneSzukajPodmioty(searchingParams);
-        log.debug("Requesting for subject with searching params: {}", searchingParams);
+        log.info("Requesting for subject with searching params: {}", searchingParams);
         var daneSzukajPodmiotyResponse = callDaneSzukajPodmiotyEndpoint(daneSzukajPodmioty);
         return SoapUtils.unmarshal(daneSzukajPodmiotyResponse, DaneSzukajPodmiotRoot.class).getDane();
     }

@@ -48,7 +48,7 @@ public class SoapUtils {
     private static void setSid(String sessionId) throws IOException {
         var context = TransportContextHolder.getTransportContext();
         var connection = (HttpUrlConnection) context.getConnection();
-        log.debug("Add sid http header to request: {}", sessionId);
+        log.info("Add sid http header to request: {}", sessionId);
         connection.addRequestHeader("sid", sessionId);
     }
 

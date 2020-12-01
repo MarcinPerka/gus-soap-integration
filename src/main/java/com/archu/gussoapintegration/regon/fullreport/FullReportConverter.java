@@ -38,7 +38,7 @@ public class FullReportConverter {
                 .build();
     }
 
-    public FullReportBaseDTO convert(OsFizycznaListaJednLokalnychRoot.OsFizycznaListaJednLokalnychData da) {
+    public FullReportBaseDTO convert(OsFizycznaListaJednLokalnychRoot.OsFizycznaListaJednLokalnychData data) {
         return null;
     }
 

@@ -42,42 +42,42 @@ public class SummaryReportClient extends WebServiceGatewaySupport {
 
     public List<NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.NowePodmiotyPrawneOrazDzialalnosciOsFizycznychData> getNowePodmiotyPrawneOrazDzialalnosciOsFizycznych(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
         var danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
     }
 
     public List<AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychData> getAktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
         String danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, AktualizowanePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
     }
 
     public List<SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychData> getSkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznych.name());
         var danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, SkreslonePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.class).getDane();
     }
 
     public List<NoweJednostkiLokalneRoot.NoweJednostkiLokalneData> getNoweJednostkiLokalne(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11NoweJednostkiLokalne);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11NoweJednostkiLokalne.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11NoweJednostkiLokalne.name());
         var danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, NoweJednostkiLokalneRoot.class).getDane();
     }
 
     public List<AktualizowaneJednostkiLokalneRoot.AktualizowaneJednostkiLokalneData> getAktualizowaneJednostkiLokalne(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11AktualizowaneJednostkiLokalne);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11AktualizowaneJednostkiLokalne.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11AktualizowaneJednostkiLokalne.name());
         var danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, AktualizowaneJednostkiLokalneRoot.class).getDane();
     }
 
     public List<SkresloneJednostkiLokalneRoot.SkresloneJednostkiLokalneData> getJednostkiLokalneSkreslone(SummaryReportSearchingParams searchingParams) {
         var danePobierzRaportZbiorczy = createDanePobierzRaportZbiorczy(searchingParams, BIR11JednostkiLokalneSkreslone);
-        log.debug("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11JednostkiLokalneSkreslone.name());
+        log.info("Requesting for summary report with date: {} and report name: {}", searchingParams.getDate(), BIR11JednostkiLokalneSkreslone.name());
         var danePobierzRaportZbiorczyResponse = callDanePobierzRaportZbiorczyEndpoint(danePobierzRaportZbiorczy);
         return unmarshal(danePobierzRaportZbiorczyResponse, SkresloneJednostkiLokalneRoot.class).getDane();
     }
