@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.config.rest.exception;
 
+import com.archu.gussoapintegration.exception.UnmarshalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -177,6 +178,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private ResponseEntity<Object> handleSoapFaultClientException(
             SoapFaultClientException ex) {
         var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Soap fault client.", ex.getClass().getSimpleName());
+        apiError.setDetails(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
+     * Handle UnmarshalException.
+     *
+     * @param ex UnmarshalException
+     * @return the ApiError object
+     */
+    @ExceptionHandler(UnmarshalException.class)
+    private ResponseEntity<Object> handleUnmarshalException(
+            UnmarshalException ex) {
+        var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Unmarshalling error.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
         return buildResponseEntity(apiError);
     }

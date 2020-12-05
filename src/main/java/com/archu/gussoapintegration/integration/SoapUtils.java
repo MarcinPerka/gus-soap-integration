@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.integration;
 
+import com.archu.gussoapintegration.exception.UnmarshalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.soap.SoapHeader;
@@ -27,9 +28,8 @@ public class SoapUtils {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (T) jaxbUnmarshaller.unmarshal(new StringReader(xml));
         } catch (Exception e) {
-            //TODO
-            e.printStackTrace();
-            throw new RuntimeException(e);
+            log.error("Error in unmarshalling string xml: {} to object of class: {}", xml, rootClass.getName());
+            throw new UnmarshalException("Error in unmarshalling string xml: %s to object of class: %s".formatted(xml, rootClass.getName()));
         }
     }
 

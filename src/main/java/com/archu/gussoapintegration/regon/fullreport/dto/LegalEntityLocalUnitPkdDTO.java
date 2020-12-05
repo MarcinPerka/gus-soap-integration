@@ -8,4 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Builder
 public class LegalEntityLocalUnitPkdDTO extends FullReportBaseDTO {
+    private String pdkCode;
+    private String pkdName;
+    private String pkdDominant;
 }
