@@ -6,24 +6,47 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FullReportConverter {
-    //TODO(Not finished)
+    //TODO(Not finished, where is)
     public NaturalPersonGeneralDataDTO convert(OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData data) {
+        return NaturalPersonGeneralDataDTO.builder()
+                .regon(data.getFizRegon9())
+                .nip(data.getFizNip())
+                .status(data.getFizStatusNip())
+                .lastName(data.getFizNazwisko())
+                .firstName(data.getFizImie1())
+                .secondName(data.getFizImie2())
+                .dateOfEntryToRegon(data.getFizDataWpisuPodmiotuDoRegon())
+                .dateOfOccurrenceChange(data.getFizDataZaistnieniaZmiany())
+                .dateOfDeleteFromRegon(data.getFizDataSkresleniaPodmiotuZRegon())
+                .basicLegalFormSymbol(data.getFizPodstawowaFormaPrawnaSymbol())
+                .detailedLegalFormSymbol(data.getFizSzczegolnaFormaPrawnaSymbol())
+                .financingFormSymbol(data.getFizFormaFinansowaniaSymbol())
+                .ownFormSymbol(data.getFizFormaWlasnosciSymbol())
+                .basicLegalFormName(data.getFizPodstawowaFormaPrawnaNazwa())
+                .detailedLegalFormName(data.getFizSzczegolnaFormaPrawnaNazwa())
+                .financingFormName(data.getFizFormaFinansowaniaNazwa())
+                .ownFormName(data.getFizFormaWlasnosciNazwa())
+                .ceidgActivity(data.getFizDzialalnoscCeidg())
+                .agriculturalActivity(data.getFizDzialalnoscRolnicza())
+                .remainingActivity(data.getFizDzialalnoscPozostala())
+                .activityDeletedTo20141108(data.getFizDzialalnoscSkreslonaDo20141108())
+                .numberOfLocalUnits(data.getFizLiczbaJednLokalnych())
+                .build();
+    }
+
+    public NaturalPersonCeidgActivityDTO convert(OsFizycznaDzialalnoscCeidgRoot.OsFizycznaDzialalnoscCeidgData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(OsFizycznaDzialalnoscCeidgRoot.OsFizycznaDzialalnoscCeidgData data) {
+    public NaturalPersonAgriculturalActivityDTO convert(OsFizycznaDzialalnoscRolniczaRoot.OsFizycznaDzialalnoscRolniczaData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(OsFizycznaDzialalnoscRolniczaRoot.OsFizycznaDzialalnoscRolniczaData data) {
+    public NaturalPersonRemainingActivityDTO convert(OsFizycznaDzialalnoscPozostalaRoot.OsFizycznaDzialalnoscPozostalaData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(OsFizycznaDzialalnoscPozostalaRoot.OsFizycznaDzialalnoscPozostalaData data) {
-        return null;
-    }
-
-    public FullReportBaseDTO convert(OsFizycznaDzialalnoscSkreslonaDo20141108Root.OsFizycznaDzialalnoscSkreslonaDo20141108Data data) {
+    public NaturalPersonActivityDeletedTo20141108DTO convert(OsFizycznaDzialalnoscSkreslonaDo20141108Root.OsFizycznaDzialalnoscSkreslonaDo20141108Data data) {
         return null;
     }
 
@@ -38,19 +61,24 @@ public class FullReportConverter {
                 .build();
     }
 
-    public FullReportBaseDTO convert(OsFizycznaListaJednLokalnychRoot.OsFizycznaListaJednLokalnychData data) {
+    public NaturalPersonLocalUnitsDTO convert(OsFizycznaListaJednLokalnychRoot.OsFizycznaListaJednLokalnychData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(JednLokalnaOsFizycznejRoot.JednLokalnaOsFizycznejData data) {
+    public NaturalPersonLocalUnitDTO convert(JednLokalnaOsFizycznejRoot.JednLokalnaOsFizycznejData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(JednLokalnaOsFizycznejPkdRoot.JednLokalnaOsFizycznejPkdData data) {
-        return null;
+    public NaturalPersonLocalUnitPkdDTO convert(JednLokalnaOsFizycznejPkdRoot.JednLokalnaOsFizycznejPkdData data) {
+        return NaturalPersonLocalUnitPkdDTO.builder()
+                .pkdCode(data.getLokfizPkdKod())
+                .pkdName(data.getLokfizPkdNazwa())
+                .pkdDominant(data.getLokfizPkdPrzewazajace())
+                .silosSymbol(data.getLokfizSilosSymbol())
+                .build();
     }
 
-    public FullReportBaseDTO convert(OsPrawnaRoot.OsPrawnaData data) {
+    public LegalEntityDTO convert(OsPrawnaRoot.OsPrawnaData data) {
         return null;
     }
 
@@ -62,15 +90,15 @@ public class FullReportConverter {
                 .build();
     }
 
-    public FullReportBaseDTO convert(OsPrawnaListaJednLokalnychRoot.OsPrawnaListaJednLokalnychData data) {
+    public LegalEntityLocalUnitsDTO convert(OsPrawnaListaJednLokalnychRoot.OsPrawnaListaJednLokalnychData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(JednLokalnaOsPrawnejRoot.JednLokalnaOsPrawnejData data) {
+    public LegalEntityLocalUnitDTO convert(JednLokalnaOsPrawnejRoot.JednLokalnaOsPrawnejData data) {
         return null;
     }
 
-    public FullReportBaseDTO convert(JednLokalnaOsPrawnejPkdRoot.JednLokalnaOsPrawnejPkdData data) {
+    public LegalEntityLocalUnitPkdDTO convert(JednLokalnaOsPrawnejPkdRoot.JednLokalnaOsPrawnejPkdData data) {
         return null;
     }
 

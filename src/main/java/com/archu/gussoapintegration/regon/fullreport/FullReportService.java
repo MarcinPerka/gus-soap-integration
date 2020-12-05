@@ -21,19 +21,19 @@ public class FullReportService {
         return fullReportConverter.convert(fullReportClient.getOsFizycznaDaneOgolne(searchingParams));
     }
 
-    public FullReportBaseDTO getNaturalPersonCeidgActivity(FullReportSearchingParams searchingParams) {
+    public NaturalPersonCeidgActivityDTO getNaturalPersonCeidgActivity(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getOsFizycznaDzialalnoscCeidg(searchingParams));
     }
 
-    public FullReportBaseDTO getNaturalPersonAgriculturalActivity(FullReportSearchingParams searchingParams) {
+    public NaturalPersonAgriculturalActivityDTO getNaturalPersonAgriculturalActivity(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getOsFizycznaDzialalnoscRolnicza(searchingParams));
     }
 
-    public FullReportBaseDTO getNaturalPersonRemainingActivities(FullReportSearchingParams searchingParams) {
+    public NaturalPersonRemainingActivityDTO getNaturalPersonRemainingActivity(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getOsFizycznaDzialalnoscPozostala(searchingParams));
     }
 
-    public FullReportBaseDTO getNaturalPersonActivitiesDeletedTo20141108(FullReportSearchingParams searchingParams) {
+    public NaturalPersonActivityDeletedTo20141108DTO getNaturalPersonActivitiyDeletedTo20141108(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getOsFizycznaDzialalnoscSkreslonaDo20141108(searchingParams));
     }
 
@@ -41,19 +41,19 @@ public class FullReportService {
         return fullReportClient.getOsFizycznaPkd(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public List<FullReportBaseDTO> getNaturalPersonLocalUnits(FullReportSearchingParams searchingParams) {
+    public List<NaturalPersonLocalUnitsDTO> getNaturalPersonLocalUnits(FullReportSearchingParams searchingParams) {
         return fullReportClient.getOsFizycznaListaJednLokalnych(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public FullReportBaseDTO getNaturalPersonLocalUnit(FullReportSearchingParams searchingParams) {
+    public NaturalPersonLocalUnitDTO getNaturalPersonLocalUnit(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getJednLokalnaOsFizycznej(searchingParams));
     }
 
-    public List<FullReportBaseDTO> getNaturalPersonLocalUnitPkd(FullReportSearchingParams searchingParams) {
+    public List<NaturalPersonLocalUnitPkdDTO> getNaturalPersonLocalUnitPkd(FullReportSearchingParams searchingParams) {
         return fullReportClient.getJednLokalnaOsFizycznejPkd(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public FullReportBaseDTO getLegalEntity(FullReportSearchingParams searchingParams) {
+    public LegalEntityDTO getLegalEntity(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getOsPrawna(searchingParams));
     }
 
@@ -61,19 +61,19 @@ public class FullReportService {
         return fullReportClient.getOsPrawnaPkd(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public List<FullReportBaseDTO> getLegalEntityLocalUnits(FullReportSearchingParams searchingParams) {
+    public List<LegalEntityLocalUnitsDTO> getLegalEntityLocalUnits(FullReportSearchingParams searchingParams) {
         return fullReportClient.getOsPrawnaListaJednLokalnych(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public FullReportBaseDTO getLegalEntityLocalUnit(FullReportSearchingParams searchingParams) {
+    public LegalEntityLocalUnitDTO getLegalEntityLocalUnit(FullReportSearchingParams searchingParams) {
         return fullReportConverter.convert(fullReportClient.getJednLokalnaOsPrawnej(searchingParams));
     }
 
-    public List<FullReportBaseDTO> getLegalEntityLocalUnitPkd(FullReportSearchingParams searchingParams) {
+    public List<LegalEntityLocalUnitPkdDTO> getLegalEntityLocalUnitPkd(FullReportSearchingParams searchingParams) {
         return fullReportClient.getJednLokalnaOsPrawnejPkd(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
-    public List<FullReportBaseDTO> getLegalEntityCivilPartnership(FullReportSearchingParams searchingParams) {
+    public List<LegalEntityCivilPartnershipDTO> getLegalEntityCivilPartnership(FullReportSearchingParams searchingParams) {
         return fullReportClient.getOsPrawnaSpCywilnaWspolnicy(searchingParams).stream().map(fullReportConverter::convert).collect(Collectors.toList());
     }
 
