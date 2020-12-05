@@ -66,7 +66,47 @@ public class FullReportConverter {
     }
 
     public NaturalPersonLocalUnitDTO convert(JednLokalnaOsFizycznejRoot.JednLokalnaOsFizycznejData data) {
-        return null;
+        return NaturalPersonLocalUnitDTO.builder()
+                .regon(data.getLokfizRegon14())
+                .name(data.getLokfizNazwa())
+                .silosId(data.getLokfizSilosID())
+                .silosName(data.getLokfizSilosNazwa())
+                .dateOfCreation(data.getLokfizDataPowstania())
+                .dateOfStartActivity(data.getLokfizDataRozpoczeciaDzialalnosci())
+                .dateOfEntryToRegon(data.getLokfizDataWpisuDoRegon())
+                .dateOfSuspendActivity(data.getLokfizDataZawieszeniaDzialalnosci())
+                .dateOfResumptionActivity(data.getLokfizDataWznowieniaDzialalnosci())
+                .dateOfOccurrenceChange(data.getLokfizDataZaistnieniaZmiany())
+                .dateOfEndActivity(data.getLokfizDataZakonczeniaDzialalnosci())
+                .dateOfDeleteFromRegon(data.getLokfizDataSkresleniaZRegon())
+                .countrySymbol(data.getLokfizAdSiedzKrajSymbol())
+                .voivodeshipSymbol(data.getLokfizAdSiedzWojewodztwoSymbol())
+                .districtSymbol(data.getLokfizAdSiedzPowiatSymbol())
+                .municipalitySymbol(data.getLokfizAdSiedzGminaSymbol())
+                .postalCode(data.getLokfizAdSiedzKodPocztowy())
+                .postTownSymbol(data.getLokfizAdSiedzMiejscowoscPocztySymbol())
+                .citySymbol(data.getLokfizAdSiedzMiejscowoscSymbol())
+                .streetSymbol(data.getLokfizAdSiedzUlicaSymbol())
+                .apartmentNumber(data.getLokfizAdSiedzNumerNieruchomosci())
+                .houseNumber(data.getLokfizAdSiedzNumerLokalu())
+                .unusualLocation(data.getLokfizAdSiedzNietypoweMiejsceLokalizacji())
+                .coountryName(data.getLokfizAdSiedzKrajNazwa())
+                .voivodeshipName(data.getLokfizAdSiedzWojewodztwoNazwa())
+                .districtName(data.getLokfizAdSiedzPowiatNazwa())
+                .muncipalityName(data.getLokfizAdSiedzGminaNazwa())
+                .cityName(data.getLokfizAdSiedzMiejscowoscNazwa())
+                .postTownName(data.getLokfizAdSiedzMiejscowoscPocztyNazwa())
+                .streetName(data.getLokfizAdSiedzUlicaNazwa())
+                .financingFormSymbol(data.getLokfizFormaFinansowaniaSymbol())
+                .financingFormName(data.getLokfizFormaFinansowaniaNazwa())
+                .dateOfRegisterInTheRegisterOfRecords(data.getLokfizDataWpisuDoRejestruEwidencji())
+                .numberInTheRegisterOfRecords(data.getLokfizNumerwRejestrzeEwidencji())
+                .registrationAuthoritySymbol(data.getLokfizOrganRejestrowySymbol())
+                .registrationAuthorityName(data.getLokfizOrganRejestrowyNazwa())
+                .typeOfRegisterSymbol(data.getLokfizRodzajRejestruSymbol())
+                .typeOfRegisterName(data.getLokfizRodzajRejestruNazwa())
+                .activityCommenced(data.isLokfizCNiePodjetoDzialalnosci())
+                .build();
     }
 
     public NaturalPersonLocalUnitPkdDTO convert(JednLokalnaOsFizycznejPkdRoot.JednLokalnaOsFizycznejPkdData data) {
