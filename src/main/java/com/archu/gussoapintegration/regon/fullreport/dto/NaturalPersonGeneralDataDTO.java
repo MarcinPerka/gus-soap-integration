@@ -8,5 +8,27 @@ import lombok.EqualsAndHashCode;
 @Builder
 @Data
 public class NaturalPersonGeneralDataDTO extends FullReportBaseDTO {
-    //TODO(Not finished)
+
+    private String regon;
+    private String nip;
+    private String status;
+    private String lastName;
+    private String firstName;
+    private String secondName;
+    private String dateOfEntryToRegon;
+    private String dateOfOccurrenceChange;
+    private String dateOfDeleteFromRegon;
+    private String basicLegalFormSymbol;
+    private String detailedLegalFormSymbol;
+    private String financingFormSymbol;
+    private String ownFormSymbol;
+    private String basicLegalFormName;
+    private String detailedLegalFormName;
+    private String financingFormName;
+    private String ownFormName;
+    private Integer ceidgActivity;
+    private Integer agriculturalActivity;
+    private Integer remainingActivity;
+    private Integer activityDeletedTo20141108;
+    private Integer numberOfLocalUnits;
 }
