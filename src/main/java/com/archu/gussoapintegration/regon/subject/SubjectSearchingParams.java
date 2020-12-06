@@ -6,10 +6,13 @@ import com.archu.gussoapintegration.validation.Regon14DigitsFields;
 import com.archu.gussoapintegration.validation.Regon9DigitsFields;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * Params which will be converted to gus "ParametryWyszukiwania"
@@ -17,6 +20,7 @@ import java.util.List;
  */
 @Getter
 @ToString
+@Slf4j
 public final class SubjectSearchingParams {
 
     /**
@@ -49,4 +53,9 @@ public final class SubjectSearchingParams {
     @Size(max = 20, message = "{validator.size.searching-params.nips.message}")
     @NipFields(message = "{validator.nips.searching-params.nips.message}")
     private List<String> nips;
+
+
+    public boolean checkIfAnyParamIsPresent() {
+        return Stream.of(krs, krses, nip, nips, regon, regonsWith9Digits, regonsWith14Digits).anyMatch(Objects::nonNull);
+    }
 }

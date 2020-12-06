@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.config.rest.exception;
 
+import com.archu.gussoapintegration.exception.BadRequestException;
 import com.archu.gussoapintegration.exception.UnmarshalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -192,6 +193,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private ResponseEntity<Object> handleUnmarshalException(
             UnmarshalException ex) {
         var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Unmarshalling error.", ex.getClass().getSimpleName());
+        apiError.setDetails(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
+     * Handle BadRequestException.
+     *
+     * @param ex BadRequestException
+     * @return the ApiError object
+     */
+    @ExceptionHandler(BadRequestException.class)
+    private ResponseEntity<Object> handleBadRequestException(
+            BadRequestException ex) {
+        var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Bad request error.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
         return buildResponseEntity(apiError);
     }
