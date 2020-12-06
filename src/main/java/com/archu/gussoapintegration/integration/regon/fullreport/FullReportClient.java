@@ -1,7 +1,7 @@
 package com.archu.gussoapintegration.integration.regon.fullreport;
 
 import com.archu.gussoapintegration.integration.regon.fullreport.model.*;
-import com.archu.gussoapintegration.integration.regon.session.SessionClient;
+import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.regon.fullreport.FullReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzPelnyRaport;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
@@ -24,7 +24,7 @@ public class FullReportClient extends WebServiceGatewaySupport {
 
     private final ObjectFactory factory;
 
-    private final SessionClient sessionClient;
+    private final SessionHolder sessionHolder;
 
     private DanePobierzPelnyRaport createDanePobierzPelnyRaport(FullReportSearchingParams searchingParams, FullReportName bir11TypPodmiotu) {
         var danePobierzPelnyRaport = new DanePobierzPelnyRaport();
@@ -36,7 +36,7 @@ public class FullReportClient extends WebServiceGatewaySupport {
     private String callDanePobierzPelnyRaportEndpoint(DanePobierzPelnyRaport danePobierzPelnyRaport) {
         return ((DanePobierzPelnyRaportResponse) getWebServiceTemplate()
                 .marshalSendAndReceive(danePobierzPelnyRaport,
-                        prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionClient.getSessionId())
+                        prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionHolder.getSessionId())
                 )).getDanePobierzPelnyRaportResult().getValue();
     }
 

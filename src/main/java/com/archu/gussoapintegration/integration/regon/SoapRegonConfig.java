@@ -2,6 +2,7 @@ package com.archu.gussoapintegration.integration.regon;
 
 import com.archu.gussoapintegration.integration.regon.fullreport.FullReportClient;
 import com.archu.gussoapintegration.integration.regon.session.SessionClient;
+import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.integration.regon.subject.SubjectClient;
 import com.archu.gussoapintegration.integration.regon.summaryreport.SummaryReportClient;
 import com.gus.regon.wsdl.ObjectFactory;
@@ -41,48 +42,53 @@ public class SoapRegonConfig {
     }
 
     @Bean
-    public ObjectFactory objectFactory(){
+    public ObjectFactory objectFactory() {
         return new ObjectFactory();
     }
 
     @Bean
-    public SummaryReportClient summaryReportClient() {
-        var client = new SummaryReportClient(objectFactory(), sessionClient());
+    public SessionHolder sessionHolder() {
+        return new SessionHolder();
+    }
+
+    @Bean
+    public SummaryReportClient summaryReportClient(ObjectFactory objectFactory, SessionHolder sessionHolder, SaajSoapMessageFactory messageFactory, Jaxb2Marshaller marshaller) {
+        var client = new SummaryReportClient(objectFactory, sessionHolder);
         client.setDefaultUri(apiEndpoint);
-        client.setMarshaller(marshaller());
-        client.setUnmarshaller(marshaller());
-        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        client.getWebServiceTemplate().setMessageFactory(messageFactory);
         return client;
     }
 
     @Bean
-    public SessionClient sessionClient() {
-        var client = new SessionClient(userKey, objectFactory());
+    public SessionClient sessionClient(ObjectFactory objectFactory, SessionHolder sessionHolder, SaajSoapMessageFactory messageFactory, Jaxb2Marshaller marshaller) {
+        var client = new SessionClient(userKey, objectFactory, sessionHolder);
         client.setDefaultUri(apiEndpoint);
-        client.setMarshaller(marshaller());
-        client.setUnmarshaller(marshaller());
-        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        client.getWebServiceTemplate().setMessageFactory(messageFactory);
         return client;
     }
 
     @Bean
-    public FullReportClient fullReportClient() {
-        var client = new FullReportClient(objectFactory(), sessionClient());
+    public FullReportClient fullReportClient(ObjectFactory objectFactory, SessionHolder sessionHolder, SaajSoapMessageFactory messageFactory, Jaxb2Marshaller marshaller) {
+        var client = new FullReportClient(objectFactory, sessionHolder);
         client.setDefaultUri(apiEndpoint);
-        client.setMarshaller(marshaller());
-        client.setUnmarshaller(marshaller());
-        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        client.getWebServiceTemplate().setMessageFactory(messageFactory);
         return client;
     }
 
 
     @Bean
-    public SubjectClient subjectClient() {
-        var client = new SubjectClient(objectFactory(), sessionClient());
+    public SubjectClient subjectClient(ObjectFactory objectFactory, SessionHolder sessionHolder, SaajSoapMessageFactory messageFactory, Jaxb2Marshaller marshaller) {
+        var client = new SubjectClient(objectFactory, sessionHolder);
         client.setDefaultUri(apiEndpoint);
-        client.setMarshaller(marshaller());
-        client.setUnmarshaller(marshaller());
-        client.getWebServiceTemplate().setMessageFactory(messageFactory());
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        client.getWebServiceTemplate().setMessageFactory(messageFactory);
         return client;
     }
 

@@ -1,12 +1,10 @@
 package com.archu.gussoapintegration.regon.fullreport;
 
-import com.archu.gussoapintegration.exception.NotImplementedException;
 import com.archu.gussoapintegration.integration.regon.fullreport.model.*;
 import com.archu.gussoapintegration.regon.fullreport.dto.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-//TODO remove blank strings in every converter
 @Component
 public class FullReportConverter {
 
@@ -14,7 +12,7 @@ public class FullReportConverter {
         return NaturalPersonGeneralDataDTO.builder()
                 .regon(StringUtils.hasText(data.getFizRegon9()) ? data.getFizRegon9() : null)
                 .nip(StringUtils.hasText(data.getFizNip()) ? data.getFizNip() : null)
-                .status(StringUtils.hasText(data.getFizStatusNip()) ? data.getFizStatusNip() : null)
+                .nipStatus(StringUtils.hasText(data.getFizStatusNip()) ? data.getFizStatusNip() : null)
                 .lastName(StringUtils.hasText(data.getFizNazwisko()) ? data.getFizNazwisko() : null)
                 .firstName(StringUtils.hasText(data.getFizImie1()) ? data.getFizImie1() : null)
                 .secondName(StringUtils.hasText(data.getFizImie2()) ? data.getFizImie2() : null)
@@ -71,7 +69,7 @@ public class FullReportConverter {
                 .countryName(StringUtils.hasText(data.getFizAdSiedzKrajNazwa()) ? data.getFizAdSiedzKrajNazwa() : null)
                 .voivodeshipName(StringUtils.hasText(data.getFizAdSiedzWojewodztwoNazwa()) ? data.getFizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getFizAdSiedzPowiatNazwa()) ? data.getFizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscNazwa()) ? data.getFizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscPocztyNazwa()) ? data.getFizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getFizAdSiedzUlicaNazwa()) ? data.getFizAdSiedzUlicaNazwa() : null)
@@ -120,7 +118,7 @@ public class FullReportConverter {
                 .countryName(StringUtils.hasText(data.getFizAdSiedzKrajNazwa()) ? data.getFizAdSiedzKrajNazwa() : null)
                 .voivodeshipName(StringUtils.hasText(data.getFizAdSiedzWojewodztwoNazwa()) ? data.getFizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getFizAdSiedzPowiatNazwa()) ? data.getFizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscNazwa()) ? data.getFizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscPocztyNazwa()) ? data.getFizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getFizAdSiedzUlicaNazwa()) ? data.getFizAdSiedzUlicaNazwa() : null)
@@ -161,7 +159,7 @@ public class FullReportConverter {
                 .countryName(StringUtils.hasText(data.getFizAdSiedzKrajNazwa()) ? data.getFizAdSiedzKrajNazwa() : null)
                 .voivodeshipName(StringUtils.hasText(data.getFizAdSiedzWojewodztwoNazwa()) ? data.getFizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getFizAdSiedzPowiatNazwa()) ? data.getFizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscNazwa()) ? data.getFizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscPocztyNazwa()) ? data.getFizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getFizAdSiedzUlicaNazwa()) ? data.getFizAdSiedzUlicaNazwa() : null)
@@ -207,7 +205,7 @@ public class FullReportConverter {
                 .countryName(StringUtils.hasText(data.getFizAdSiedzKrajNazwa()) ? data.getFizAdSiedzKrajNazwa() : null)
                 .voivodeshipName(StringUtils.hasText(data.getFizAdSiedzWojewodztwoNazwa()) ? data.getFizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getFizAdSiedzPowiatNazwa()) ? data.getFizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getFizAdSiedzGminaNazwa()) ? data.getFizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscNazwa()) ? data.getFizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getFizAdSiedzMiejscowoscPocztyNazwa()) ? data.getFizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getFizAdSiedzUlicaNazwa()) ? data.getFizAdSiedzUlicaNazwa() : null)
@@ -244,7 +242,7 @@ public class FullReportConverter {
                 .unusualLocation(StringUtils.hasText(data.getLokfizAdSiedzNietypoweMiejsceLokalizacji()) ? data.getLokfizAdSiedzNietypoweMiejsceLokalizacji() : null)
                 .voivodeshipName(StringUtils.hasText(data.getLokfizAdSiedzWojewodztwoNazwa()) ? data.getLokfizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getLokfizAdSiedzPowiatNazwa()) ? data.getLokfizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getLokfizAdSiedzGminaNazwa()) ? data.getLokfizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getLokfizAdSiedzGminaNazwa()) ? data.getLokfizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getLokfizAdSiedzMiejscowoscNazwa()) ? data.getLokfizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getLokfizAdSiedzMiejscowoscPocztyNazwa()) ? data.getLokfizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getLokfizAdSiedzUlicaNazwa()) ? data.getLokfizAdSiedzUlicaNazwa() : null)
@@ -283,10 +281,10 @@ public class FullReportConverter {
                 .apartmentNumber(StringUtils.hasText(data.getLokfizAdSiedzNumerNieruchomosci()) ? data.getLokfizAdSiedzNumerNieruchomosci() : null)
                 .houseNumber(StringUtils.hasText(data.getLokfizAdSiedzNumerLokalu()) ? data.getLokfizAdSiedzNumerLokalu() : null)
                 .unusualLocation(StringUtils.hasText(data.getLokfizAdSiedzNietypoweMiejsceLokalizacji()) ? data.getLokfizAdSiedzNietypoweMiejsceLokalizacji() : null)
-                .coountryName(StringUtils.hasText(data.getLokfizAdSiedzKrajNazwa()) ? data.getLokfizAdSiedzKrajNazwa() : null)
+                .countryName(StringUtils.hasText(data.getLokfizAdSiedzKrajNazwa()) ? data.getLokfizAdSiedzKrajNazwa() : null)
                 .voivodeshipName(StringUtils.hasText(data.getLokfizAdSiedzWojewodztwoNazwa()) ? data.getLokfizAdSiedzWojewodztwoNazwa() : null)
                 .districtName(StringUtils.hasText(data.getLokfizAdSiedzPowiatNazwa()) ? data.getLokfizAdSiedzPowiatNazwa() : null)
-                .muncipalityName(StringUtils.hasText(data.getLokfizAdSiedzGminaNazwa()) ? data.getLokfizAdSiedzGminaNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getLokfizAdSiedzGminaNazwa()) ? data.getLokfizAdSiedzGminaNazwa() : null)
                 .cityName(StringUtils.hasText(data.getLokfizAdSiedzMiejscowoscNazwa()) ? data.getLokfizAdSiedzMiejscowoscNazwa() : null)
                 .postTownName(StringUtils.hasText(data.getLokfizAdSiedzMiejscowoscPocztyNazwa()) ? data.getLokfizAdSiedzMiejscowoscPocztyNazwa() : null)
                 .streetName(StringUtils.hasText(data.getLokfizAdSiedzUlicaNazwa()) ? data.getLokfizAdSiedzUlicaNazwa() : null)
@@ -312,8 +310,63 @@ public class FullReportConverter {
     }
 
     public LegalEntityDTO convert(OsPrawnaRoot.OsPrawnaData data) {
-        //TODO
-        throw new NotImplementedException("Not implemented proper convert method.");
+        return LegalEntityDTO.builder()
+                .regon(StringUtils.hasText(data.getPrawRegon9()) ? data.getPrawRegon9() : null)
+                .nip(StringUtils.hasText(data.getPrawNip()) ? data.getPrawNip() : null)
+                .nipStatus(StringUtils.hasText(data.getPrawStatusNip()) ? data.getPrawStatusNip() : null)
+                .name(StringUtils.hasText(data.getPrawNazwa()) ? data.getPrawNazwa() : null)
+                .shortName(StringUtils.hasText(data.getPrawNazwaSkrocona()) ? data.getPrawNazwaSkrocona() : null)
+                .numberInTheRegisterOfRecords(StringUtils.hasText(data.getPrawNumerWRejestrzeEwidencji()) ? data.getPrawNumerWRejestrzeEwidencji() : null)
+                .dateOfRegisterInTheRegisterOfRecords(StringUtils.hasText(data.getPrawDataWpisuDoRejestruEwidencji()) ? data.getPrawDataWpisuDoRejestruEwidencji() : null)
+                .dateOfCreation(StringUtils.hasText(data.getPrawDataPowstania()) ? data.getPrawDataPowstania() : null)
+                .dateOfStartActivity(StringUtils.hasText(data.getPrawDataRozpoczeciaDzialalnosci()) ? data.getPrawDataRozpoczeciaDzialalnosci() : null)
+                .dateOfEntryToRegon(StringUtils.hasText(data.getPrawDataWpisuDoRegon()) ? data.getPrawDataWpisuDoRegon() : null)
+                .dateOfSuspendActivity(StringUtils.hasText(data.getPrawDataZawieszeniaDzialalnosci()) ? data.getPrawDataZawieszeniaDzialalnosci() : null)
+                .dateOfResumptionActivity(StringUtils.hasText(data.getPrawDataWznowieniaDzialalnosci()) ? data.getPrawDataWznowieniaDzialalnosci() : null)
+                .dateOfOccurrenceChange(StringUtils.hasText(data.getPrawDataZaistnieniaZmiany()) ? data.getPrawDataZaistnieniaZmiany() : null)
+                .dateOfEndActivity(StringUtils.hasText(data.getPrawDataZakonczeniaDzialalnosci()) ? data.getPrawDataZakonczeniaDzialalnosci() : null)
+                .dateOfDeleteFromRegon(StringUtils.hasText(data.getPrawDataSkresleniaZRegon()) ? data.getPrawDataSkresleniaZRegon() : null)
+                .dateOfBankruptcyDeclaration(StringUtils.hasText(data.getPrawDataOrzeczeniaOUpadlosci()) ? data.getPrawDataOrzeczeniaOUpadlosci() : null)
+                .dateOfConclusionOfBankruptcyProceedings(StringUtils.hasText(data.getPrawDataZakonczeniaPostepowaniaUpadlosciowego()) ? data.getPrawDataZakonczeniaPostepowaniaUpadlosciowego() : null)
+                .countrySymbol(StringUtils.hasText(data.getPrawAdSiedzKrajSymbol()) ? data.getPrawAdSiedzKrajSymbol() : null)
+                .voivodeshipSymbol(StringUtils.hasText(data.getPrawAdSiedzWojewodztwoSymbol()) ? data.getPrawAdSiedzWojewodztwoSymbol() : null)
+                .districtSymbol(StringUtils.hasText(data.getPrawAdSiedzPowiatSymbol()) ? data.getPrawAdSiedzPowiatSymbol() : null)
+                .municipalitySymbol(StringUtils.hasText(data.getPrawAdSiedzGminaSymbol()) ? data.getPrawAdSiedzGminaSymbol() : null)
+                .postalCode(StringUtils.hasText(data.getPrawAdSiedzKodPocztowy()) ? data.getPrawAdSiedzKodPocztowy() : null)
+                .postTownSymbol(StringUtils.hasText(data.getPrawAdSiedzMiejscowoscPocztySymbol()) ? data.getPrawAdSiedzMiejscowoscPocztySymbol() : null)
+                .citySymbol(StringUtils.hasText(data.getPrawAdSiedzMiejscowoscSymbol()) ? data.getPrawAdSiedzMiejscowoscSymbol() : null)
+                .streetSymbol(StringUtils.hasText(data.getPrawAdSiedzUlicaSymbol()) ? data.getPrawAdSiedzUlicaSymbol() : null)
+                .apartmentNumber(StringUtils.hasText(data.getPrawAdSiedzNumerNieruchomosci()) ? data.getPrawAdSiedzNumerNieruchomosci() : null)
+                .houseNumber(StringUtils.hasText(data.getPrawAdSiedzNumerLokalu()) ? data.getPrawAdSiedzNumerLokalu() : null)
+                .unusualLocation(StringUtils.hasText(data.getPrawAdSiedzNietypoweMiejsceLokalizacji()) ? data.getPrawAdSiedzNietypoweMiejsceLokalizacji() : null)
+                .phoneNumber(StringUtils.hasText(data.getPrawNumerTelefonu()) ? data.getPrawNumerTelefonu() : null)
+                .extensionNumber(StringUtils.hasText(data.getPrawNumerWewnetrznyTelefonu()) ? data.getPrawNumerWewnetrznyTelefonu() : null)
+                .faxNumber(StringUtils.hasText(data.getPrawNumerFaksu()) ? data.getPrawNumerFaksu() : null)
+                .email(StringUtils.hasText(data.getPrawAdresEmail()) ? data.getPrawAdresEmail() : null)
+                .websiteAddress(StringUtils.hasText(data.getPrawAdresStronyinternetowej()) ? data.getPrawAdresStronyinternetowej() : null)
+                .countryName(StringUtils.hasText(data.getPrawAdSiedzKrajNazwa()) ? data.getPrawAdSiedzKrajNazwa() : null)
+                .voivodeshipName(StringUtils.hasText(data.getPrawAdSiedzWojewodztwoNazwa()) ? data.getPrawAdSiedzWojewodztwoNazwa() : null)
+                .districtName(StringUtils.hasText(data.getPrawAdSiedzPowiatNazwa()) ? data.getPrawAdSiedzPowiatNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getPrawAdSiedzGminaNazwa()) ? data.getPrawAdSiedzGminaNazwa() : null)
+                .cityName(StringUtils.hasText(data.getPrawAdSiedzMiejscowoscNazwa()) ? data.getPrawAdSiedzMiejscowoscNazwa() : null)
+                .postTownName(StringUtils.hasText(data.getPrawAdSiedzMiejscowoscPocztyNazwa()) ? data.getPrawAdSiedzMiejscowoscPocztyNazwa() : null)
+                .streetName(StringUtils.hasText(data.getPrawAdSiedzUlicaNazwa()) ? data.getPrawAdSiedzUlicaNazwa() : null)
+                .basicLegalFormSymbol(StringUtils.hasText(data.getPrawPodstawowaFormaPrawnaSymbol()) ? data.getPrawPodstawowaFormaPrawnaSymbol() : null)
+                .detailedLegalFormSymbol(StringUtils.hasText(data.getPrawSzczegolnaFormaPrawnaSymbol()) ? data.getPrawSzczegolnaFormaPrawnaSymbol() : null)
+                .financingFormSymbol(StringUtils.hasText(data.getPrawFormaFinansowaniaSymbol()) ? data.getPrawFormaFinansowaniaSymbol() : null)
+                .ownFormSymbol(StringUtils.hasText(data.getPrawFormaWlasnosciSymbol()) ? data.getPrawFormaWlasnosciSymbol() : null)
+                .foundingAuthoritySymbol(StringUtils.hasText(data.getPrawOrganZalozycielskiSymbol()) ? data.getPrawOrganZalozycielskiSymbol() : null)
+                .registrationAuthoritySymbol(StringUtils.hasText(data.getPrawOrganRejestrowySymbol()) ? data.getPrawOrganRejestrowySymbol() : null)
+                .typeOfRegisterSymbol(StringUtils.hasText(data.getPrawRodzajRejestruEwidencjiSymbol()) ? data.getPrawRodzajRejestruEwidencjiSymbol() : null)
+                .basicLegalFormName(StringUtils.hasText(data.getPrawPodstawowaFormaPrawnaNazwa()) ? data.getPrawPodstawowaFormaPrawnaNazwa() : null)
+                .detailedLegalFormName(StringUtils.hasText(data.getPrawSzczegolnaFormaPrawnaNazwa()) ? data.getPrawSzczegolnaFormaPrawnaNazwa() : null)
+                .financingFormName(StringUtils.hasText(data.getPrawFormaFinansowaniaNazwa()) ? data.getPrawFormaFinansowaniaNazwa() : null)
+                .ownFormName(StringUtils.hasText(data.getPrawFormaWlasnosciNazwa()) ? data.getPrawFormaWlasnosciNazwa() : null)
+                .foundingAuthorityName(StringUtils.hasText(data.getPrawOrganZalozycielskiNazwa()) ? data.getPrawOrganZalozycielskiNazwa() : null)
+                .registrationAuthorityName(StringUtils.hasText(data.getPrawOrganRejestrowyNazwa()) ? data.getPrawOrganRejestrowyNazwa() : null)
+                .typeOfRegisterName(StringUtils.hasText(data.getPrawRodzajRejestruEwidencjiNazwa()) ? data.getPrawRodzajRejestruEwidencjiNazwa() : null)
+                .numberOfLocalUnits(data.getPrawLiczbaJednLokalnych())
+                .build();
     }
 
     public LegalEntityPkdDTO convert(OsPrawnaPkdRoot.OsPrawnaPkdData data) {
@@ -325,13 +378,75 @@ public class FullReportConverter {
     }
 
     public LegalEntityLocalUnitsDTO convert(OsPrawnaListaJednLokalnychRoot.OsPrawnaListaJednLokalnychData data) {
-        //TODO
-        throw new NotImplementedException("Not implemented proper convert method.");
+        return LegalEntityLocalUnitsDTO.builder()
+                .regon(StringUtils.hasText(data.getLokprawRegon14()) ? data.getLokprawRegon14() : null)
+                .name(StringUtils.hasText(data.getLokprawNazwa()) ? data.getLokprawNazwa() : null)
+                .countrySymbol(StringUtils.hasText(data.getLokprawAdSiedzKrajSymbol()) ? data.getLokprawAdSiedzKrajSymbol() : null)
+                .voivodeshipSymbol(StringUtils.hasText(data.getLokprawAdSiedzWojewodztwoSymbol()) ? data.getLokprawAdSiedzWojewodztwoSymbol() : null)
+                .districtSymbol(StringUtils.hasText(data.getLokprawAdSiedzPowiatSymbol()) ? data.getLokprawAdSiedzPowiatSymbol() : null)
+                .municipalitySymbol(StringUtils.hasText(data.getLokprawAdSiedzGminaSymbol()) ? data.getLokprawAdSiedzGminaSymbol() : null)
+                .postalCode(StringUtils.hasText(data.getLokprawAdSiedzKodPocztowy()) ? data.getLokprawAdSiedzKodPocztowy() : null)
+                .postTownSymbol(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscPocztySymbol()) ? data.getLokprawAdSiedzMiejscowoscPocztySymbol() : null)
+                .citySymbol(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscSymbol()) ? data.getLokprawAdSiedzMiejscowoscSymbol() : null)
+                .streetSymbol(StringUtils.hasText(data.getLokprawAdSiedzUlicaSymbol()) ? data.getLokprawAdSiedzUlicaSymbol() : null)
+                .apartmentNumber(StringUtils.hasText(data.getLokprawAdSiedzNumerNieruchomosci()) ? data.getLokprawAdSiedzNumerNieruchomosci() : null)
+                .houseNumber(StringUtils.hasText(data.getLokprawAdSiedzNumerLokalu()) ? data.getLokprawAdSiedzNumerLokalu() : null)
+                .unusualLocation(StringUtils.hasText(data.getLokprawAdSiedzNietypoweMiejsceLokalizacji()) ? data.getLokprawAdSiedzNietypoweMiejsceLokalizacji() : null)
+                .voivodeshipName(StringUtils.hasText(data.getLokprawAdSiedzWojewodztwoNazwa()) ? data.getLokprawAdSiedzWojewodztwoNazwa() : null)
+                .districtName(StringUtils.hasText(data.getLokprawAdSiedzPowiatNazwa()) ? data.getLokprawAdSiedzPowiatNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getLokprawAdSiedzGminaNazwa()) ? data.getLokprawAdSiedzGminaNazwa() : null)
+                .cityName(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscNazwa()) ? data.getLokprawAdSiedzMiejscowoscNazwa() : null)
+                .postTownName(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscPocztyNazwa()) ? data.getLokprawAdSiedzMiejscowoscPocztyNazwa() : null)
+                .streetName(StringUtils.hasText(data.getLokprawAdSiedzUlicaNazwa()) ? data.getLokprawAdSiedzUlicaNazwa() : null)
+                .dateOfCreation(StringUtils.hasText(data.getLokprawDataPowstania()) ? data.getLokprawDataPowstania() : null)
+                .dateOfStartActivity(StringUtils.hasText(data.getLokprawDataRozpoczeciaDzialalnosci()) ? data.getLokprawDataRozpoczeciaDzialalnosci() : null)
+                .dateOfEntryToRegon(StringUtils.hasText(data.getLokprawDataWpisuDoRegon()) ? data.getLokprawDataWpisuDoRegon() : null)
+                .dateOfSuspendActivity(StringUtils.hasText(data.getLokprawDataZawieszeniaDzialalnosci()) ? data.getLokprawDataZawieszeniaDzialalnosci() : null)
+                .dateOfResumptionActivity(StringUtils.hasText(data.getLokprawDataWznowieniaDzialalnosci()) ? data.getLokprawDataWznowieniaDzialalnosci() : null)
+                .dateOfEndActivity(StringUtils.hasText(data.getLokprawDataZakonczeniaDzialalnosci()) ? data.getLokprawDataZakonczeniaDzialalnosci() : null)
+                .dateOfDeleteFromRegon(StringUtils.hasText(data.getLokprawDataSkresleniaZRegon()) ? data.getLokprawDataSkresleniaZRegon() : null)
+                .build();
     }
 
     public LegalEntityLocalUnitDTO convert(JednLokalnaOsPrawnejRoot.JednLokalnaOsPrawnejData data) {
-        //TODO
-        throw new NotImplementedException("Not implemented proper convert method.");
+        return LegalEntityLocalUnitDTO.builder()
+                .regon(StringUtils.hasText(data.getLokprawRegon14()) ? data.getLokprawRegon14() : null)
+                .name(StringUtils.hasText(data.getLokprawNazwa()) ? data.getLokprawNazwa() : null)
+                .numberInTheRegisterOfRecords(StringUtils.hasText(data.getLokprawNumerWrejestrzeEwidencji()) ? data.getLokprawNumerWrejestrzeEwidencji() : null)
+                .dateOfRegisterInTheRegisterOfRecords(StringUtils.hasText(data.getLokprawDataWpisuDoRejestruEwidencji()) ? data.getLokprawDataWpisuDoRejestruEwidencji() : null)
+                .dateOfCreation(StringUtils.hasText(data.getLokprawDataPowstania()) ? data.getLokprawDataPowstania() : null)
+                .dateOfStartActivity(StringUtils.hasText(data.getLokprawDataRozpoczeciaDzialalnosci()) ? data.getLokprawDataRozpoczeciaDzialalnosci() : null)
+                .dateOfEntryToRegon(StringUtils.hasText(data.getLokprawDataWpisuDoRegon()) ? data.getLokprawDataWpisuDoRegon() : null)
+                .dateOfSuspendActivity(StringUtils.hasText(data.getLokprawDataZawieszeniaDzialalnosci()) ? data.getLokprawDataZawieszeniaDzialalnosci() : null)
+                .dateOfResumptionActivity(StringUtils.hasText(data.getLokprawDataWznowieniaDzialalnosci()) ? data.getLokprawDataWznowieniaDzialalnosci() : null)
+                .dateOfOccurrenceChange(StringUtils.hasText(data.getLokprawDataZaistnieniaZmiany()) ? data.getLokprawDataZaistnieniaZmiany() : null)
+                .dateOfEndActivity(StringUtils.hasText(data.getLokprawDataZakonczeniaDzialalnosci()) ? data.getLokprawDataZakonczeniaDzialalnosci() : null)
+                .dateOfDeleteFromRegon(StringUtils.hasText(data.getLokprawDataSkresleniaZRegon()) ? data.getLokprawDataSkresleniaZRegon() : null)
+                .countrySymbol(StringUtils.hasText(data.getLokprawAdSiedzKrajSymbol()) ? data.getLokprawAdSiedzKrajSymbol() : null)
+                .voivodeshipSymbol(StringUtils.hasText(data.getLokprawAdSiedzWojewodztwoSymbol()) ? data.getLokprawAdSiedzWojewodztwoSymbol() : null)
+                .districtSymbol(StringUtils.hasText(data.getLokprawAdSiedzPowiatSymbol()) ? data.getLokprawAdSiedzPowiatSymbol() : null)
+                .municipalitySymbol(StringUtils.hasText(data.getLokprawAdSiedzGminaSymbol()) ? data.getLokprawAdSiedzGminaSymbol() : null)
+                .postalCode(StringUtils.hasText(data.getLokprawAdSiedzKodPocztowy()) ? data.getLokprawAdSiedzKodPocztowy() : null)
+                .postTownSymbol(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscPocztySymbol()) ? data.getLokprawAdSiedzMiejscowoscPocztySymbol() : null)
+                .citySymbol(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscSymbol()) ? data.getLokprawAdSiedzMiejscowoscSymbol() : null)
+                .streetSymbol(StringUtils.hasText(data.getLokprawAdSiedzUlicaSymbol()) ? data.getLokprawAdSiedzUlicaSymbol() : null)
+                .apartmentNumber(StringUtils.hasText(data.getLokprawAdSiedzNumerNieruchomosci()) ? data.getLokprawAdSiedzNumerNieruchomosci() : null)
+                .houseNumber(StringUtils.hasText(data.getLokprawAdSiedzNumerLokalu()) ? data.getLokprawAdSiedzNumerLokalu() : null)
+                .unusualLocation(StringUtils.hasText(data.getLokprawAdSiedzNietypoweMiejsceLokalizacji()) ? data.getLokprawAdSiedzNietypoweMiejsceLokalizacji() : null)
+                .countryName(StringUtils.hasText(data.getLokprawAdSiedzKrajNazwa()) ? data.getLokprawAdSiedzKrajNazwa() : null)
+                .voivodeshipName(StringUtils.hasText(data.getLokprawAdSiedzWojewodztwoNazwa()) ? data.getLokprawAdSiedzWojewodztwoNazwa() : null)
+                .districtName(StringUtils.hasText(data.getLokprawAdSiedzPowiatNazwa()) ? data.getLokprawAdSiedzPowiatNazwa() : null)
+                .municipalityName(StringUtils.hasText(data.getLokprawAdSiedzGminaNazwa()) ? data.getLokprawAdSiedzGminaNazwa() : null)
+                .cityName(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscNazwa()) ? data.getLokprawAdSiedzMiejscowoscNazwa() : null)
+                .postTownName(StringUtils.hasText(data.getLokprawAdSiedzMiejscowoscPocztyNazwa()) ? data.getLokprawAdSiedzMiejscowoscPocztyNazwa() : null)
+                .streetName(StringUtils.hasText(data.getLokprawAdSiedzUlicaNazwa()) ? data.getLokprawAdSiedzUlicaNazwa() : null)
+                .financingFormSymbol(StringUtils.hasText(data.getLokprawFormaFinansowaniaSymbol()) ? data.getLokprawFormaFinansowaniaSymbol() : null)
+                .registrationAuthoritySymbol(StringUtils.hasText(data.getLokprawOrganRejestrowySymbol()) ? data.getLokprawOrganRejestrowySymbol() : null)
+                .typeOfRegisterSymbol(StringUtils.hasText(data.getLokprawRodzajRejestruEwidencjiSymbol()) ? data.getLokprawRodzajRejestruEwidencjiSymbol() : null)
+                .financingFormName(StringUtils.hasText(data.getLokprawFormaFinansowaniaNazwa()) ? data.getLokprawFormaFinansowaniaNazwa() : null)
+                .registrationAuthorityName(StringUtils.hasText(data.getLokprawOrganRejestrowyNazwa()) ? data.getLokprawOrganRejestrowyNazwa() : null)
+                .typeOfRegisterName(StringUtils.hasText(data.getLokprawRodzajRejestruEwidencjiNazwa()) ? data.getLokprawRodzajRejestruEwidencjiNazwa() : null)
+                .build();
     }
 
     public LegalEntityLocalUnitPkdDTO convert(JednLokalnaOsPrawnejPkdRoot.JednLokalnaOsPrawnejPkdData data) {

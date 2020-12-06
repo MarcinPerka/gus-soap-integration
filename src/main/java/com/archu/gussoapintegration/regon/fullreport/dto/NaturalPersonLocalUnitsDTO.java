@@ -25,7 +25,7 @@ public class NaturalPersonLocalUnitsDTO extends FullReportBaseDTO {
     private String unusualLocation;
     private String voivodeshipName;
     private String districtName;
-    private String muncipalityName;
+    private String municipalityName;
     private String cityName;
     private String postTownName;
     private String streetName;

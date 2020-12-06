@@ -1,7 +1,7 @@
 package com.archu.gussoapintegration.integration.regon.subject;
 
 import com.archu.gussoapintegration.integration.SoapUtils;
-import com.archu.gussoapintegration.integration.regon.session.SessionClient;
+import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.integration.regon.subject.model.DaneSzukajPodmiotRoot;
 import com.archu.gussoapintegration.regon.subject.SubjectSearchingParams;
 import com.gus.regon.wsdl.DaneSzukajPodmioty;
@@ -22,7 +22,7 @@ public class SubjectClient extends WebServiceGatewaySupport {
 
     private final ObjectFactory factory;
 
-    private final SessionClient sessionClient;
+    private final SessionHolder sessionHolder;
 
     public List<DaneSzukajPodmiotRoot.DaneSzukajPodmiotData> getDaneSzukajPodmiot(SubjectSearchingParams searchingParams) {
         var daneSzukajPodmioty = createDaneSzukajPodmioty(searchingParams);
@@ -32,7 +32,7 @@ public class SubjectClient extends WebServiceGatewaySupport {
     }
 
     private String callDaneSzukajPodmiotyEndpoint(DaneSzukajPodmioty daneSzukajPodmioty) {
-        return ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionClient.getSessionId())))
+        return ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionHolder.getSessionId())))
                 .getDaneSzukajPodmiotyResult()
                 .getValue();
     }

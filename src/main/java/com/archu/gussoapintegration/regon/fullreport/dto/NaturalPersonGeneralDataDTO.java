@@ -11,7 +11,7 @@ public class NaturalPersonGeneralDataDTO extends FullReportBaseDTO {
 
     private String regon;
     private String nip;
-    private String status;
+    private String nipStatus;
     private String lastName;
     private String firstName;
     private String secondName;

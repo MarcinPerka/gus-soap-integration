@@ -1,6 +1,6 @@
 package com.archu.gussoapintegration.integration.regon.summaryreport;
 
-import com.archu.gussoapintegration.integration.regon.session.SessionClient;
+import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.integration.regon.summaryreport.model.*;
 import com.archu.gussoapintegration.regon.summaryreport.SummaryReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzRaportZbiorczy;
@@ -24,7 +24,7 @@ public class SummaryReportClient extends WebServiceGatewaySupport {
 
     private final ObjectFactory factory;
 
-    private final SessionClient sessionClient;
+    private final SessionHolder sessionHolder;
 
     private DanePobierzRaportZbiorczy createDanePobierzRaportZbiorczy(SummaryReportSearchingParams searchingParams, SummaryReportName bir11NowePodmiotyPrawneOrazDzialalnosciOsFizycznych) {
         var danePobierzRaportZbiorczy = new DanePobierzRaportZbiorczy();
@@ -36,7 +36,7 @@ public class SummaryReportClient extends WebServiceGatewaySupport {
     private String callDanePobierzRaportZbiorczyEndpoint(DanePobierzRaportZbiorczy danePobierzRaportZbiorczy) {
         return ((DanePobierzRaportZbiorczyResponse) getWebServiceTemplate().marshalSendAndReceive(
                 danePobierzRaportZbiorczy,
-                prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_RAPORT_ZBIORCZY, sessionClient.getSessionId())
+                prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_RAPORT_ZBIORCZY, sessionHolder.getSessionId())
         )).getDanePobierzRaportZbiorczyResult().getValue();
     }
 

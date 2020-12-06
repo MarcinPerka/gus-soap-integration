@@ -39,7 +39,7 @@ public class NaturalPersonActivityDeletedTo20141108DTO extends FullReportBaseDTO
     private String countryName;
     private String voivodeshipName;
     private String districtName;
-    private String muncipalityName;
+    private String municipalityName;
     private String cityName;
     private String postTownName;
     private String streetName;

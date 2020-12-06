@@ -3,7 +3,6 @@ package com.archu.gussoapintegration.integration.regon.session;
 import com.gus.regon.wsdl.ObjectFactory;
 import com.gus.regon.wsdl.Zaloguj;
 import com.gus.regon.wsdl.ZalogujResponse;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,8 +21,7 @@ public class SessionClient extends WebServiceGatewaySupport {
 
     private final ObjectFactory factory;
 
-    @Getter
-    private String sessionId;
+    private final SessionHolder sessionHolder;
 
     @PostConstruct
     public void init() {
@@ -33,13 +31,13 @@ public class SessionClient extends WebServiceGatewaySupport {
     public String getZaloguj() {
         var zaloguj = createZaloguj();
         log.info("Requesting for session id");
-        sessionId = callZalogujEndpoint(zaloguj);
-        return sessionId;
+        sessionHolder.setSessionId(callZalogujEndpoint(zaloguj));
+        return sessionHolder.getSessionId();
     }
 
     private String callZalogujEndpoint(Zaloguj zaloguj) {
         return ((ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(
-                zaloguj, prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionId)
+                zaloguj, prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionHolder.getSessionId())
         )).getZalogujResult().getValue();
     }
 
@@ -54,6 +52,6 @@ public class SessionClient extends WebServiceGatewaySupport {
     private void refreshSession() {
         log.info("Refreshing session id");
         getZaloguj();
-        log.info("New session id: {}", sessionId);
+        log.info("New session id: {}", sessionHolder.getSessionId());
     }
 }
