@@ -29,7 +29,7 @@ public class SoapUtils {
             return (T) jaxbUnmarshaller.unmarshal(new StringReader(xml));
         } catch (Exception e) {
             log.error("Error in unmarshalling string xml: {} to object of class: {}", xml, rootClass.getName());
-            throw new UnmarshalException("Error in unmarshalling string xml: %s to object of class: %s".formatted(xml, rootClass.getName()));
+            throw new UnmarshalException(String.format("Error in unmarshalling string xml: %s to object of class: %s", xml, rootClass.getName()));
         }
     }
 

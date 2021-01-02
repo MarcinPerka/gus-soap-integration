@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk15
+FROM adoptopenjdk/openjdk11
 VOLUME /tmp
 EXPOSE 8489
 COPY target/*.jar gus-soap-integration.jar

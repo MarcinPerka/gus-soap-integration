@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>15</java.version>
+        <java.version>11</java.version>
         <javax-validation.version>2.0.1.Final</javax-validation.version>
         <hibernate.version>6.1.6.Final</hibernate.version>
         <swagger.version>3.0.0</swagger.version>
