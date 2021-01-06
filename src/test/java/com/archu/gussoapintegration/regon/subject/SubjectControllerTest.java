@@ -12,10 +12,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(SubjectController.class)
 public class SubjectControllerTest {
+
     @Autowired
     private MockMvc mockMvc;
+
     @MockBean
     private SubjectService subjectService;
+
     private final String SUBJECTS_API_PREFIX = "/api/regon/subjects";
 
     @Test

@@ -16,8 +16,10 @@ public class SummaryReportControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
     @MockBean
     private SummaryReportService summaryReportService;
+
     private final String SUMMARY_REPORTS_API_PREFIX = "/api/regon/summary-reports";
 
     @Test
