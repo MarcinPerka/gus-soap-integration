@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.lang.reflect.Field;
@@ -25,7 +23,7 @@ public class SubjectController {
     private final SubjectService subjectService;
 
     @GetMapping
-    public List<SubjectDTO> getSubjects(@Valid SubjectSearchingParams searchingParams) {
+    public List<SubjectDTO> getSubjects(@ModelAttribute @Valid SubjectSearchingParams searchingParams) {
         if(!searchingParams.checkIfAnyParamIsPresent())
             throw new BadRequestException("No request parameter was entered");
 
