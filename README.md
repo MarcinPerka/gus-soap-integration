@@ -18,8 +18,8 @@ This is a project which use SOAP protocol to get data from GUS (https://api.stat
 - Heroku
 
 ## Build app with docker
-- Build `docker build -t gus-soap-integration .`
-- Run `docker run --publish 8489:8489 gus-soap-integration`
+- Build `docker build . --tag gus-soap-integration`
+- Run (set server port in docker container and bind it to host port eg. 8489) `docker run -p 8489:8489 -e "PORT=8489" gus-soap-integration`
 
 ## Swagger Paths
 - All Swagger Resources(groups) `http://url:8489/gus/documentation/swagger-resources`
