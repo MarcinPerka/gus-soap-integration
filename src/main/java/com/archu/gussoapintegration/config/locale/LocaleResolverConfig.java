@@ -9,17 +9,11 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @Configuration
-public class LocaleResolverConfig implements WebMvcConfigurer {
-
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        var localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("lang");
-        return localeChangeInterceptor;
-    }
+public class LocaleResolverConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public Validator getValidator() {
@@ -31,9 +25,10 @@ public class LocaleResolverConfig implements WebMvcConfigurer {
     @Bean
     public MessageSource messageSource() {
         var messageSource = new ReloadableResourceBundleMessageSource();
-
         messageSource.setBasename("classpath:i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(-1);
+        messageSource.setFallbackToSystemLocale(true);
         return messageSource;
     }
 
@@ -42,8 +37,4 @@ public class LocaleResolverConfig implements WebMvcConfigurer {
         return new CustomLocaleResolver();
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
-    }
 }
