@@ -1,4 +1,4 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
-public class FullReportBaseDTO {
+public abstract class FullReportBaseDTO {
 }

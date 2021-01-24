@@ -10,7 +10,6 @@ import org.springframework.ws.transport.context.TransportContextHolder;
 import org.springframework.ws.transport.http.HttpUrlConnection;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.io.StringReader;
@@ -20,12 +19,16 @@ import static com.archu.gussoapintegration.integration.SoapConstants.*;
 @Slf4j
 public class SoapUtils {
 
+    private SoapUtils() {
+
+    }
+
     public static <T> T unmarshal(String xml, Class<T> rootClass) {
         log.debug("Parsing xml to: {}", rootClass.toString());
         JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(rootClass);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            var jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (T) jaxbUnmarshaller.unmarshal(new StringReader(xml));
         } catch (Exception e) {
             log.error("Error in unmarshalling string xml: {} to object of class: {}", xml, rootClass.getName());

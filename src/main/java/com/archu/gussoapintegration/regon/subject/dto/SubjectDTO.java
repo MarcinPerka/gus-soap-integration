@@ -1,27 +1,29 @@
 package com.archu.gussoapintegration.regon.subject.dto;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
 
 @Builder
-@Data
+@ToString
+@Getter
 public class SubjectDTO {
 
-    private String regon;
-    private String nip;
-    private String statusNip;
-    private String name;
-    private String voivodeship;
-    private String district;
-    private String municipality;
-    private String city;
-    private String postalCode;
-    private String street;
-    private String houseNumber;
-    private String apartmentNumber;
-    private String type;
-    private Integer silosId;
-    private String businessEndDate;
-    private String postTown;
+    private final String regon;
+    private final String nip;
+    private final String statusNip;
+    private final String name;
+    private final String voivodeship;
+    private final String district;
+    private final String municipality;
+    private final String city;
+    private final String postalCode;
+    private final String street;
+    private final String houseNumber;
+    private final String apartmentNumber;
+    private final String type;
+    private final Integer silosId;
+    private final String businessEndDate;
+    private final String postTown;
 }

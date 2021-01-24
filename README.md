@@ -29,3 +29,5 @@ This is a project which use SOAP protocol to get data from GUS (https://api.stat
 ## TODO
 - Add unit tests
 - Add integration tests
+- ResponseEntity -> Not found if all elements of dto are nulls etc.
+- Fix locale

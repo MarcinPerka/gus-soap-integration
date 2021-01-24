@@ -1,16 +1,16 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 @Builder
+@ToString
+@Getter
 public class LegalEntityCivilPartnershipDTO extends FullReportBaseDTO {
-    protected String civilPartnerRegon;
-    protected String civilPartnerFirstName;
-    protected String civilPartnerSecondName;
-    protected String civilPartnerLastName;
-    protected String civilPartnerCompanyName;
+    private final String civilPartnerRegon;
+    private final String civilPartnerFirstName;
+    private final String civilPartnerSecondName;
+    private final String civilPartnerLastName;
+    private final String civilPartnerCompanyName;
 }

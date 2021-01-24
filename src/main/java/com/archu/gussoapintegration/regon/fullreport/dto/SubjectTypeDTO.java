@@ -1,12 +1,10 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@ToString
 @Builder
+@Getter
 public class SubjectTypeDTO extends FullReportBaseDTO {
-    private String type;
+    private final String type;
 }

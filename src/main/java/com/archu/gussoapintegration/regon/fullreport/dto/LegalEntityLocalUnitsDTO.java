@@ -1,38 +1,38 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@ToString
 @Builder
+@Getter
 public class LegalEntityLocalUnitsDTO extends FullReportBaseDTO {
 
-    private String regon;
-    private String name;
-    private String countrySymbol;
-    private String voivodeshipSymbol;
-    private String districtSymbol;
-    private String municipalitySymbol;
-    private String postalCode;
-    private String postTownSymbol;
-    private String citySymbol;
-    private String streetSymbol;
-    private String apartmentNumber;
-    private String houseNumber;
-    private String unusualLocation;
-    private String voivodeshipName;
-    private String districtName;
-    private String municipalityName;
-    private String cityName;
-    private String postTownName;
-    private String streetName;
-    private String dateOfCreation;
-    private String dateOfStartActivity;
-    private String dateOfEntryToRegon;
-    private String dateOfSuspendActivity;
-    private String dateOfResumptionActivity;
-    private String dateOfEndActivity;
-    private String dateOfDeleteFromRegon;
+    private final String regon;
+    private final String name;
+    private final String countrySymbol;
+    private final String voivodeshipSymbol;
+    private final String districtSymbol;
+    private final String municipalitySymbol;
+    private final String postalCode;
+    private final String postTownSymbol;
+    private final String citySymbol;
+    private final String streetSymbol;
+    private final String apartmentNumber;
+    private final String houseNumber;
+    private final String unusualLocation;
+    private final String voivodeshipName;
+    private final String districtName;
+    private final String municipalityName;
+    private final String cityName;
+    private final String postTownName;
+    private final String streetName;
+    private final String dateOfCreation;
+    private final String dateOfStartActivity;
+    private final String dateOfEntryToRegon;
+    private final String dateOfSuspendActivity;
+    private final String dateOfResumptionActivity;
+    private final String dateOfEndActivity;
+    private final String dateOfDeleteFromRegon;
 }

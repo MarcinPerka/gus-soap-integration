@@ -1,34 +1,34 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
+@ToString
 @Builder
-@Data
+@Getter
 public class NaturalPersonGeneralDataDTO extends FullReportBaseDTO {
 
-    private String regon;
-    private String nip;
-    private String nipStatus;
-    private String lastName;
-    private String firstName;
-    private String secondName;
-    private String dateOfEntryToRegon;
-    private String dateOfOccurrenceChange;
-    private String dateOfDeleteFromRegon;
-    private String basicLegalFormSymbol;
-    private String detailedLegalFormSymbol;
-    private String financingFormSymbol;
-    private String ownFormSymbol;
-    private String basicLegalFormName;
-    private String detailedLegalFormName;
-    private String financingFormName;
-    private String ownFormName;
-    private Integer ceidgActivity;
-    private Integer agriculturalActivity;
-    private Integer remainingActivity;
-    private Integer activityDeletedTo20141108;
-    private Integer numberOfLocalUnits;
+    private final String regon;
+    private final String nip;
+    private final String nipStatus;
+    private final String lastName;
+    private final String firstName;
+    private final String secondName;
+    private final String dateOfEntryToRegon;
+    private final String dateOfOccurrenceChange;
+    private final String dateOfDeleteFromRegon;
+    private final String basicLegalFormSymbol;
+    private final String detailedLegalFormSymbol;
+    private final String financingFormSymbol;
+    private final String ownFormSymbol;
+    private final String basicLegalFormName;
+    private final String detailedLegalFormName;
+    private final String financingFormName;
+    private final String ownFormName;
+    private final Integer ceidgActivity;
+    private final Integer agriculturalActivity;
+    private final Integer remainingActivity;
+    private final Integer activityDeletedTo20141108;
+    private final Integer numberOfLocalUnits;
 }

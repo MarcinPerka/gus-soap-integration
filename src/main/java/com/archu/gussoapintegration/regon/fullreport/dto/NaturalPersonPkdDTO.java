@@ -1,17 +1,17 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
+@ToString
 @Builder
-@Data
+@Getter
 public class NaturalPersonPkdDTO extends FullReportBaseDTO {
-    private String pkdCode;
-    private String pkdName;
-    private String pkdDominant;
-    private Integer silosId;
-    private String silosSymbol;
-    private String businessEndDate;
+    private final String pkdCode;
+    private final String pkdName;
+    private final String pkdDominant;
+    private final Integer silosId;
+    private final String silosSymbol;
+    private final String businessEndDate;
 }

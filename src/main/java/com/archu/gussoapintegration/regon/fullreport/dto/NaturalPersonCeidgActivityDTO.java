@@ -1,55 +1,55 @@
 package com.archu.gussoapintegration.regon.fullreport.dto;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@ToString
 @Builder
+@Getter
 public class NaturalPersonCeidgActivityDTO extends FullReportBaseDTO {
-    private String regon;
-    private String name;
-    private String shortName;
-    private String dateOfCreation;
-    private String dateOfStartActivity;
-    private String dateOfEntryToRegon;
-    private String dateOfSuspendActivity;
-    private String dateOfResumptionActivity;
-    private String dateOfOccurrenceChange;
-    private String dateOfEndActivity;
-    private String dateOfDeleteFromRegon;
-    private String dateOfBankruptcyDeclaration;
-    private String dateOfConclusionOfBankruptcyProceedings;
-    private String countrySymbol;
-    private String voivodeshipSymbol;
-    private String districtSymbol;
-    private String municipalitySymbol;
-    private String postalCode;
-    private String postTownSymbol;
-    private String citySymbol;
-    private String streetSymbol;
-    private String apartmentNumber;
-    private String houseNumber;
-    private String unusualLocation;
-    private String phoneNumber;
-    private String extensionNumber;
-    private String faxNumber;
-    private String email;
-    private String websiteAddress;
-    private String countryName;
-    private String voivodeshipName;
-    private String districtName;
-    private String municipalityName;
-    private String cityName;
-    private String postTownName;
-    private String streetName;
-    private String dateOfRegisterInTheRegisterOfRecords;
-    private String dateOfDeleteFromTheRegisterOfRecords;
-    private String numberInTheRegisterOfRecords;
-    private String registrationAuthoritySymbol;
-    private String registrationAuthorityName;
-    private String typeOfRegisterSymbol;
-    private String typeOfRegisterName;
-    private Boolean activityCommenced;
+    private final String regon;
+    private final String name;
+    private final String shortName;
+    private final String dateOfCreation;
+    private final String dateOfStartActivity;
+    private final String dateOfEntryToRegon;
+    private final String dateOfSuspendActivity;
+    private final String dateOfResumptionActivity;
+    private final String dateOfOccurrenceChange;
+    private final String dateOfEndActivity;
+    private final String dateOfDeleteFromRegon;
+    private final String dateOfBankruptcyDeclaration;
+    private final String dateOfConclusionOfBankruptcyProceedings;
+    private final String countrySymbol;
+    private final String voivodeshipSymbol;
+    private final String districtSymbol;
+    private final String municipalitySymbol;
+    private final String postalCode;
+    private final String postTownSymbol;
+    private final String citySymbol;
+    private final String streetSymbol;
+    private final String apartmentNumber;
+    private final String houseNumber;
+    private final String unusualLocation;
+    private final String phoneNumber;
+    private final String extensionNumber;
+    private final String faxNumber;
+    private final String email;
+    private final String websiteAddress;
+    private final String countryName;
+    private final String voivodeshipName;
+    private final String districtName;
+    private final String municipalityName;
+    private final String cityName;
+    private final String postTownName;
+    private final String streetName;
+    private final String dateOfRegisterInTheRegisterOfRecords;
+    private final String dateOfDeleteFromTheRegisterOfRecords;
+    private final String numberInTheRegisterOfRecords;
+    private final String registrationAuthoritySymbol;
+    private final String registrationAuthorityName;
+    private final String typeOfRegisterSymbol;
+    private final String typeOfRegisterName;
+    private final Boolean activityCommenced;
 }

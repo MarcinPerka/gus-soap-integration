@@ -1,25 +1,23 @@
 package com.archu.gussoapintegration.config.rest.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
-@Data
-@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
+@Getter
+@ToString
 class ApiValidationError extends BaseApiSubError {
 
     @NotBlank
-    private String object;
+    private final String object;
 
     private String field;
 
     private Object rejectedValue;
 
     @NotBlank
-    private String message;
+    private final String message;
 
 
     public ApiValidationError(@NotBlank String object, @NotBlank String message) {

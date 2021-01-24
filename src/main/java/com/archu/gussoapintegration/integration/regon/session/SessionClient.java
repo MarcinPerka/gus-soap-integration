@@ -31,8 +31,7 @@ public class SessionClient extends WebServiceGatewaySupport {
     public String getZaloguj() {
         var zaloguj = createZaloguj();
         log.info("Requesting for session id");
-        sessionHolder.setSessionId(callZalogujEndpoint(zaloguj));
-        return sessionHolder.getSessionId();
+        return callZalogujEndpoint(zaloguj);
     }
 
     private String callZalogujEndpoint(Zaloguj zaloguj) {
@@ -51,7 +50,7 @@ public class SessionClient extends WebServiceGatewaySupport {
     @Scheduled(fixedRateString = "${soap.regon.session-refresh}")
     private void refreshSession() {
         log.info("Refreshing session id");
-        getZaloguj();
+        sessionHolder.setSessionId(getZaloguj());
         log.info("New session id: {}", sessionHolder.getSessionId());
     }
 }

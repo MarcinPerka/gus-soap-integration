@@ -1,10 +1,10 @@
 package com.archu.gussoapintegration.regon.summaryreport.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@ToString
 @AllArgsConstructor
+@Getter
 public class SummaryReportBaseDTO {
-    private String regon;
+    private final String regon;
 }
