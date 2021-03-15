@@ -1,8 +1,9 @@
 package com.archu.gussoapintegration.integration.regon.summaryreport;
 
+import com.archu.gussoapintegration.api.regon.summaryreport.SummaryReportSearchingParams;
+import com.archu.gussoapintegration.exception.ResourceNotFoundException;
 import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.integration.regon.summaryreport.model.*;
-import com.archu.gussoapintegration.regon.summaryreport.SummaryReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzRaportZbiorczy;
 import com.gus.regon.wsdl.DanePobierzRaportZbiorczyResponse;
 import com.gus.regon.wsdl.ObjectFactory;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.archu.gussoapintegration.integration.SoapUtils.prepareSoapActionCallback;
 import static com.archu.gussoapintegration.integration.SoapUtils.unmarshal;
@@ -42,10 +44,13 @@ public class SummaryReportClient extends WebServiceGatewaySupport {
     }
 
     private String callDanePobierzRaportZbiorczyEndpoint(DanePobierzRaportZbiorczy danePobierzRaportZbiorczy) {
-        return ((DanePobierzRaportZbiorczyResponse) getWebServiceTemplate().marshalSendAndReceive(
-                danePobierzRaportZbiorczy,
-                prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_RAPORT_ZBIORCZY, sessionHolder.getSessionId())
-        )).getDanePobierzRaportZbiorczyResult().getValue();
+        var optionalResponse = Optional.of(getWebServiceTemplate()
+                .marshalSendAndReceive(danePobierzRaportZbiorczy,
+                        prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_RAPORT_ZBIORCZY, sessionHolder.getSessionId())
+                ));
+
+        return optionalResponse.map(response -> ((DanePobierzRaportZbiorczyResponse) response).getDanePobierzRaportZbiorczyResult().getValue())
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     public List<NowePodmiotyPrawneOrazDzialalnosciOsFizycznychRoot.NowePodmiotyPrawneOrazDzialalnosciOsFizycznychData> getNowePodmiotyPrawneOrazDzialalnosciOsFizycznych(SummaryReportSearchingParams searchingParams) {

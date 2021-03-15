@@ -1,6 +1,8 @@
 package com.archu.gussoapintegration.regon.summaryreport;
 
 
+import com.archu.gussoapintegration.api.regon.summaryreport.SummaryReportController;
+import com.archu.gussoapintegration.api.regon.summaryreport.SummaryReportService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,7 +22,7 @@ public class SummaryReportControllerTest {
     @MockBean
     private SummaryReportService summaryReportService;
 
-    private final String SUMMARY_REPORTS_API_PREFIX = "/api/regon/summary-reports";
+    private final String SUMMARY_REPORTS_API_PREFIX = "/regon/summary-reports";
 
     @Test
     public void getNewLegalEntitiesAndActivitiesOfNaturalPeopleWhenDateIsValid() throws Exception {

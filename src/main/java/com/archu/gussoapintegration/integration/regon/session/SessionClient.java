@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.integration.regon.session;
 
+import com.archu.gussoapintegration.exception.ResourceNotFoundException;
 import com.gus.regon.wsdl.ObjectFactory;
 import com.gus.regon.wsdl.Zaloguj;
 import com.gus.regon.wsdl.ZalogujResponse;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 import static com.archu.gussoapintegration.integration.SoapUtils.prepareSoapActionCallback;
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.WSA_ACTION_ZALOGUJ;
@@ -35,9 +37,13 @@ public class SessionClient extends WebServiceGatewaySupport {
     }
 
     private String callZalogujEndpoint(Zaloguj zaloguj) {
-        return ((ZalogujResponse) getWebServiceTemplate().marshalSendAndReceive(
-                zaloguj, prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionHolder.getSessionId())
-        )).getZalogujResult().getValue();
+        var optionalResponse = Optional.of(getWebServiceTemplate()
+                .marshalSendAndReceive(zaloguj,
+                        prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_ZALOGUJ, sessionHolder.getSessionId())
+                ));
+
+        return optionalResponse.map(response -> ((ZalogujResponse) response).getZalogujResult().getValue())
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     private Zaloguj createZaloguj() {

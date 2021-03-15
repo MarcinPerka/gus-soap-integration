@@ -1,5 +1,7 @@
 package com.archu.gussoapintegration.regon.fullreport;
 
+import com.archu.gussoapintegration.api.regon.fullreport.FullReportController;
+import com.archu.gussoapintegration.api.regon.fullreport.FullReportService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,7 +21,7 @@ public class FullReportControllerTest {
     @MockBean
     private FullReportService fullReportService;
 
-    private final String FULL_REPORTS_API_PREFIX = "/api/regon/full-reports";
+    private final String FULL_REPORTS_API_PREFIX = "/regon/full-reports";
 
     @Test
     public void getNaturalPersonGeneralDataWhenRegonIsValid() throws Exception {

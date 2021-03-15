@@ -1,5 +1,7 @@
 package com.archu.gussoapintegration.regon.subject;
 
+import com.archu.gussoapintegration.api.regon.subject.SubjectController;
+import com.archu.gussoapintegration.api.regon.subject.SubjectService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,7 +21,7 @@ public class SubjectControllerTest {
     @MockBean
     private SubjectService subjectService;
 
-    private final String SUBJECTS_API_PREFIX = "/api/regon/subjects";
+    private final String SUBJECTS_API_PREFIX = "/regon/subjects";
 
     @Test
     public void getSubjectsWhenCorrectRegonIsGiven() throws Exception {

@@ -1,9 +1,10 @@
 package com.archu.gussoapintegration.integration.regon.subject;
 
+import com.archu.gussoapintegration.api.regon.subject.SubjectSearchingParams;
+import com.archu.gussoapintegration.exception.ResourceNotFoundException;
 import com.archu.gussoapintegration.integration.SoapUtils;
 import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
 import com.archu.gussoapintegration.integration.regon.subject.model.DaneSzukajPodmiotRoot;
-import com.archu.gussoapintegration.regon.subject.SubjectSearchingParams;
 import com.gus.regon.wsdl.DaneSzukajPodmioty;
 import com.gus.regon.wsdl.DaneSzukajPodmiotyResponse;
 import com.gus.regon.wsdl.ObjectFactory;
@@ -13,7 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import java.util.List;
+import java.util.Optional;
 
+import static com.archu.gussoapintegration.integration.SoapUtils.prepareSoapActionCallback;
 import static com.archu.gussoapintegration.integration.regon.SoapRegonConstants.WSA_ACTION_DANE_SZUKAJ_PODMIOTY;
 
 @Slf4j
@@ -32,9 +35,13 @@ public class SubjectClient extends WebServiceGatewaySupport {
     }
 
     private String callDaneSzukajPodmiotyEndpoint(DaneSzukajPodmioty daneSzukajPodmioty) {
-        return ((DaneSzukajPodmiotyResponse) getWebServiceTemplate().marshalSendAndReceive(daneSzukajPodmioty, SoapUtils.prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionHolder.getSessionId())))
-                .getDaneSzukajPodmiotyResult()
-                .getValue();
+        var optionalResponse = Optional.of(getWebServiceTemplate()
+                .marshalSendAndReceive(daneSzukajPodmioty,
+                        prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_SZUKAJ_PODMIOTY, sessionHolder.getSessionId())
+                ));
+
+        return optionalResponse.map(response -> ((DaneSzukajPodmiotyResponse) response).getDaneSzukajPodmiotyResult().getValue())
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     private DaneSzukajPodmioty createDaneSzukajPodmioty(SubjectSearchingParams searchingParams) {

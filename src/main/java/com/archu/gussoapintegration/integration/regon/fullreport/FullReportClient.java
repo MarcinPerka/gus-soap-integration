@@ -1,8 +1,9 @@
 package com.archu.gussoapintegration.integration.regon.fullreport;
 
+import com.archu.gussoapintegration.api.regon.fullreport.FullReportSearchingParams;
+import com.archu.gussoapintegration.exception.ResourceNotFoundException;
 import com.archu.gussoapintegration.integration.regon.fullreport.model.*;
 import com.archu.gussoapintegration.integration.regon.session.SessionHolder;
-import com.archu.gussoapintegration.regon.fullreport.FullReportSearchingParams;
 import com.gus.regon.wsdl.DanePobierzPelnyRaport;
 import com.gus.regon.wsdl.DanePobierzPelnyRaportResponse;
 import com.gus.regon.wsdl.ObjectFactory;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.archu.gussoapintegration.integration.SoapUtils.prepareSoapActionCallback;
 import static com.archu.gussoapintegration.integration.SoapUtils.unmarshal;
@@ -53,10 +55,13 @@ public class FullReportClient extends WebServiceGatewaySupport {
     }
 
     private String callDanePobierzPelnyRaportEndpoint(DanePobierzPelnyRaport danePobierzPelnyRaport) {
-        return ((DanePobierzPelnyRaportResponse) getWebServiceTemplate()
+        var optionalResponse = Optional.of(getWebServiceTemplate()
                 .marshalSendAndReceive(danePobierzPelnyRaport,
                         prepareSoapActionCallback(getDefaultUri(), WSA_ACTION_DANE_POBIERZ_PELNY_RAPORT, sessionHolder.getSessionId())
-                )).getDanePobierzPelnyRaportResult().getValue();
+                ));
+
+        return optionalResponse.map(response -> ((DanePobierzPelnyRaportResponse) response).getDanePobierzPelnyRaportResult().getValue())
+                .orElseThrow(ResourceNotFoundException::new);
     }
 
     public OsFizycznaDaneOgolneRoot.OsFizycznaDaneOgolneData getOsFizycznaDaneOgolne(FullReportSearchingParams searchingParams) {
