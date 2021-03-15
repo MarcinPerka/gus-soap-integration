@@ -1,7 +1,5 @@
-package com.archu.gussoapintegration.regon.fullreport;
+package com.archu.gussoapintegration.api.regon.fullreport;
 
-import com.archu.gussoapintegration.api.regon.fullreport.FullReportController;
-import com.archu.gussoapintegration.api.regon.fullreport.FullReportService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

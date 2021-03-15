@@ -160,7 +160,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * @return the ApiError object
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    private ResponseEntity<Object> handleMethodArgumentTypeMismatchException(
+    private ResponseEntity<?> handleMethodArgumentTypeMismatchException(
             MethodArgumentTypeMismatchException ex) {
 
         var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Could not convert parameter.", ex.getClass().getSimpleName());
@@ -175,7 +175,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * @return the ApiError object
      */
     @ExceptionHandler(SoapFaultClientException.class)
-    private ResponseEntity<Object> handleSoapFaultClientException(
+    private ResponseEntity<?> handleSoapFaultClientException(
             SoapFaultClientException ex) {
         var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Soap fault client.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
@@ -189,7 +189,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * @return the ApiError object
      */
     @ExceptionHandler(UnmarshalException.class)
-    private ResponseEntity<Object> handleUnmarshalException(
+    private ResponseEntity<?> handleUnmarshalException(
             UnmarshalException ex) {
         var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Unmarshalling error.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
@@ -203,9 +203,23 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
      * @return the ApiError object
      */
     @ExceptionHandler(BadRequestException.class)
-    private ResponseEntity<Object> handleBadRequestException(
+    private ResponseEntity<?> handleBadRequestException(
             BadRequestException ex) {
         var apiError = new ApiError(HttpStatus.BAD_REQUEST, "Bad request error.", ex.getClass().getSimpleName());
+        apiError.setDetails(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    /**
+     * Hanlde exceptions of other types.
+     *
+     * @param ex Exception
+     * @return the ApiError object
+     */
+    @ExceptionHandler(Exception.class)
+    private ResponseEntity<?> handleException(
+            Exception ex) {
+        var apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error.", ex.getClass().getSimpleName());
         apiError.setDetails(ex.getMessage());
         return buildResponseEntity(apiError);
     }

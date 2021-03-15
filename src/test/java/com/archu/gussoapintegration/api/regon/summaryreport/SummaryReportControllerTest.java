@@ -1,8 +1,6 @@
-package com.archu.gussoapintegration.regon.summaryreport;
+package com.archu.gussoapintegration.api.regon.summaryreport;
 
 
-import com.archu.gussoapintegration.api.regon.summaryreport.SummaryReportController;
-import com.archu.gussoapintegration.api.regon.summaryreport.SummaryReportService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
