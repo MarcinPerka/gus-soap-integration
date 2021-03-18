@@ -1,6 +1,7 @@
 package com.archu.gussoapintegration.api.regon.subject.dto;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -8,6 +9,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Getter
+@EqualsAndHashCode
 public class SubjectDTO {
 
     private final String regon;

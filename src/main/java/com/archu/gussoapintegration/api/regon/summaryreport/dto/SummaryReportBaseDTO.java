@@ -5,6 +5,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class SummaryReportBaseDTO {
     private final String regon;
 }

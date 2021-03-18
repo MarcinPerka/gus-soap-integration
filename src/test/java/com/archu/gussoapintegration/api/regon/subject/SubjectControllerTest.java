@@ -1,5 +1,6 @@
 package com.archu.gussoapintegration.api.regon.subject;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,22 +23,25 @@ public class SubjectControllerTest {
     private final String SUBJECTS_API_PREFIX = "/regon/subjects";
 
     @Test
-    public void getSubjectsWhenCorrectRegonIsGiven() throws Exception {
-        this.mockMvc.perform(get(SUBJECTS_API_PREFIX + "?regon=471043763"))
+    @DisplayName("GET /subjects success when correct regon is given")
+    public void testGetSubjectsWhenCorrectRegonIsGiven() throws Exception {
+        mockMvc.perform(get(SUBJECTS_API_PREFIX + "?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getSubjectsWhenWrongRegonIsGiven() throws Exception {
-        this.mockMvc.perform(get(SUBJECTS_API_PREFIX + "?regon=abcde"))
+    @DisplayName("GET /subjects failure when wrong regon is given")
+    public void testGetSubjectsWhenWrongRegonIsGiven() throws Exception {
+        mockMvc.perform(get(SUBJECTS_API_PREFIX + "?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getSubjectsWhenRequestParamsAreNotGiven() throws Exception {
-        this.mockMvc.perform(get(SUBJECTS_API_PREFIX))
+    @DisplayName("GET /subjects failure when request params are not given")
+    public void testGetSubjectsWhenRequestParamsAreNotGiven() throws Exception {
+        mockMvc.perform(get(SUBJECTS_API_PREFIX))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }

@@ -22,323 +22,323 @@ public class FullReportControllerTest {
     private final String FULL_REPORTS_API_PREFIX = "/regon/full-reports";
 
     @Test
-    public void getNaturalPersonGeneralDataWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data?regon=471043763"))
+    public void testGetNaturalPersonGeneralDataWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonGeneralDataWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data?regon=abcde"))
+    public void testGetNaturalPersonGeneralDataWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonGeneralDataWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data"))
+    public void testGetNaturalPersonGeneralDataWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/general-data"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonCeidgActivityWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/ceidg-activity?regon=471043763"))
+    public void testGetNaturalPersonCeidgActivityWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/ceidg-activity?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonAgriculturalActivityWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity?regon=471043763"))
+    public void testGetNaturalPersonAgriculturalActivityWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonAgriculturalActivityWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity?regon=abcde"))
+    public void testGetNaturalPersonAgriculturalActivityWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonAgriculturalActivityWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity"))
+    public void testGetNaturalPersonAgriculturalActivityWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/agricultural-activity"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonRemainingActivityWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity?regon=471043763"))
+    public void testGetNaturalPersonRemainingActivityWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonRemainingActivityWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity?regon=abcde"))
+    public void testGetNaturalPersonRemainingActivityWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonRemainingActivityWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity"))
+    public void testGetNaturalPersonRemainingActivityWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/remaining-activity"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonActivityDeletedTo20141108WhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08?regon=471043763"))
+    public void testGetNaturalPersonActivityDeletedTo20141108WhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonActivityDeletedTo20141108WhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08?regon=abcde"))
+    public void testGetNaturalPersonActivityDeletedTo20141108WhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonActivityDeletedTo20141108WhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08"))
+    public void testGetNaturalPersonActivityDeletedTo20141108WhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/activity-deleted-to-2014-11-08"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonPkdWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd?regon=471043763"))
+    public void testGetNaturalPersonPkdWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonPkdWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd?regon=abcde"))
+    public void testGetNaturalPersonPkdWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonPkdWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd"))
+    public void testGetNaturalPersonPkdWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/pkd"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitsWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units?regon=471043763"))
+    public void testGetNaturalPersonLocalUnitsWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitsWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units?regon=abcde"))
+    public void testGetNaturalPersonLocalUnitsWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitsWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units"))
+    public void testGetNaturalPersonLocalUnitsWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-units"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit?regon=471043763"))
+    public void testGetNaturalPersonLocalUnitWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit?regon=abcde"))
+    public void testGetNaturalPersonLocalUnitWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit"))
+    public void testGetNaturalPersonLocalUnitWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitPkdWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd?regon=471043763"))
+    public void testGetNaturalPersonLocalUnitPkdWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitPkdWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd?regon=abcde"))
+    public void testGetNaturalPersonLocalUnitPkdWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd?regon=abcde"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getNaturalPersonLocalUnitPkdWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd"))
+    public void testGetNaturalPersonLocalUnitPkdWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/natural-person/local-unit-pkd"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity?regon=471043763"))
+    public void testGetLegalEntityWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity?regon=kljas"))
+    public void testGetLegalEntityWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity?regon=kljas"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity"))
+    public void testGetLegalEntityWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityPkdWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?regon=471043763"))
+    public void testGetLegalEntityPkdWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityPkdWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?regon=32139831231312938719"))
+    public void testGetLegalEntityPkdWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?regon=32139831231312938719"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityPkdWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?"))
+    public void testGetLegalEntityPkdWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/pkd?"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitsWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?regon=471043763"))
+    public void testGetLegalEntityLocalUnitsWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityLocalUnitsWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?regon="))
+    public void testGetLegalEntityLocalUnitsWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?regon="))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitsWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?nip=471043763"))
+    public void testGetLegalEntityLocalUnitsWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-units?nip=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit?regon=471043763"))
+    public void testGetLegalEntityLocalUnitWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityLocalUnitWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit?regon=kjh"))
+    public void testGetLegalEntityLocalUnitWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit?regon=kjh"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit"))
+    public void testGetLegalEntityLocalUnitWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitPkdWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd?regon=47104376312345"))
+    public void testGetLegalEntityLocalUnitPkdWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd?regon=47104376312345"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityLocalUnitPkdWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd?regon=0471043763"))
+    public void testGetLegalEntityLocalUnitPkdWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd?regon=0471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityLocalUnitPkdWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd"))
+    public void testGetLegalEntityLocalUnitPkdWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/local-unit-pkd"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityCivilPartnershipWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership?regon=471043763"))
+    public void testGetLegalEntityCivilPartnershipWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getLegalEntityCivilPartnershipWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership?regon=471043763123"))
+    public void testGetLegalEntityCivilPartnershipWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership?regon=471043763123"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getLegalEntityCivilPartnershipWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership"))
+    public void testGetLegalEntityCivilPartnershipWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/legal-entity/civil-partnership"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getSubjectTypeWhenRegonIsValid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type?regon=471043763"))
+    public void testGetSubjectTypeWhenRegonIsValid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type?regon=471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void getSubjectTypeWhenRegonIsInvalid() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type?regon=01471043763"))
+    public void testGetSubjectTypeWhenRegonIsInvalid() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type?regon=01471043763"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    public void getSubjectTypeWhenRegonIsNotGiven() throws Exception {
-        this.mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type"))
+    public void testGetSubjectTypeWhenRegonIsNotGiven() throws Exception {
+        mockMvc.perform(get(FULL_REPORTS_API_PREFIX + "/subject-type"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest());
     }
