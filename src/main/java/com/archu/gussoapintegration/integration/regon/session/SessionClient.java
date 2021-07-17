@@ -25,11 +25,6 @@ public class SessionClient extends WebServiceGatewaySupport {
 
     private final SessionHolder sessionHolder;
 
-    @PostConstruct
-    public void init() {
-        refreshSession();
-    }
-
     public String getZaloguj() {
         var zaloguj = createZaloguj();
         log.info("Requesting for session id");
