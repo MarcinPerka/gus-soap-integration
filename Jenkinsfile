@@ -2,15 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                script {
-                    properties([pipelineTriggers([pollSCM('')])])
-                }
-                git 'https://github.com/MarcinPerka/gus-soap-integration.git'
-            }
-        }
-
         stage('Compile') {
             steps {
                 sh "./mvnw clean compile"
