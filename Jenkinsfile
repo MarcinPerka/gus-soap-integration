@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/MarcinPerka/gus-soap-integration.git'
+            }
+        }
+        
         stage('Compile') {
             steps {
                 sh "./mvnw clean compile"
