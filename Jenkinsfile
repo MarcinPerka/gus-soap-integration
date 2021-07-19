@@ -41,14 +41,18 @@ pipeline {
 
         stage('Install') {
             steps {
-                dockerImage = docker.build("${DOCKER_REPOSITORY}:${BUILD_ID}")
+                script {
+                    dockerImage = docker.build("${DOCKER_REPOSITORY}:${BUILD_ID}")
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                docker.withRegistry(REGISTRY_CREDENTIAL, REGISTRY_CREDENTIAL) {
-                    dockerImage.push()
+                script {
+                    docker.withRegistry(REGISTRY_CREDENTIAL, REGISTRY_CREDENTIAL) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
