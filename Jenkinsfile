@@ -65,7 +65,7 @@ pipeline {
 
         stage('Cleaning up') {
             steps {
-                sh "docker rmi $registry:$BUILD_ID"
+                sh "docker rmi $DOCKER_REPOSITORY:$BUILD_ID"
             }
         }
     }
