@@ -44,5 +44,29 @@ pipeline {
             }
         }
 
+        stage('Install') {
+            steps {
+                script {
+                    // Requires Docker Plugin in Jenkins instance.
+                    dockerImage = docker.build("${DOCKER_REPOSITORY}:${BUILD_ID}")
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.withRegistry(REGISTRY_URL, REGISTRY_CREDENTIAL) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+
+        stage('Cleaning up') {
+            steps {
+                sh "docker rmi $registry:$BUILD_ID"
+            }
+        }
     }
 }
