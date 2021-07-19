@@ -36,9 +36,9 @@ pipeline {
                 always {
                     // Requires HTMLPublisher plugin in Jenkins instance.
                     publishHTML(target: [
-                            reportDir  : 'report/coverage',
+                            reportDir  : 'target/site/jacoco',
                             reportFiles: 'index.html',
-                            reportName : 'Coverage Report - Unit Test'
+                            reportName : 'Coverage_Report_Unit_Test'
                     ])
                 }
             }
@@ -47,6 +47,7 @@ pipeline {
         stage('Install') {
             steps {
                 script {
+                    // Requires Docker Plugin in Jenkins instance.
                     dockerImage = docker.build("${DOCKER_REPOSITORY}:${BUILD_ID}")
                 }
             }
