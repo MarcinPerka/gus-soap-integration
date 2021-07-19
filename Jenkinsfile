@@ -4,8 +4,8 @@ pipeline {
         DOCKER_REPOSITORY = 'marcinperka/gus-soap-integration'
         REGISTRY_CREDENTIAL = 'dockerhub_id'
         REGISTRY_URL = 'https://hub.docker.com'
+        dockerImage = ''
     }
-    def dockerImage
     triggers {
         pollSCM('* * * * *')
     }
