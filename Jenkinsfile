@@ -31,11 +31,16 @@ pipeline {
         stage("Check Coverage") {
             steps {
                 sh "./mvnw jacoco:report"
-                publishHTML(target: [
-                        reportDir  : 'build/reports/jacoco/test/html',
-                        reportFiles: 'index.html',
-                        reportName : "JaCoCo Report"
-                ])
+            }
+            post {
+                always {
+                    // Requires HTMLPublisher plugin in Jenkins instance.
+                    publishHTML(target: [
+                            reportDir  : 'report/coverage',
+                            reportFiles: 'index.html',
+                            reportName : 'Coverage Report - Unit Test'
+                    ])
+                }
             }
         }
 
